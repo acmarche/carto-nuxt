@@ -2,6 +2,9 @@
 export default defineNuxtConfig({
     devtools: {enabled: true},
     debug: false,
+    router: {
+        base: '/cartographie/'
+    },
     modules: ['@nuxtjs/tailwindcss', '@nuxtjs/google-fonts'],
     app: {
         head: {
