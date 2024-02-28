@@ -22,6 +22,27 @@ function capitalized(word) {
 function itemHasData(item) {
   return item.length > 0;
 }
+
+function manageFilters2(name, value, event) {
+  const filt = {localite: filters.value.localite, tags: filters.value.tags}
+  if (!event.target.checked) {
+    if (name === 'localite') {
+      filt.localite = null
+    } else {
+      const index = filt.tags.indexOf(value)
+      if (index !== -1) {
+        filt.tags.splice(index, 1)
+      }
+    }
+  } else {
+    if (name === 'localite') {
+      filt.localite = value
+    } else {
+      filt.tags.push(value)
+    }
+  }
+  filters.value = filt
+}
 </script>
 <style scoped>
 /* Utilisation des classes de transition */
@@ -127,7 +148,7 @@ function itemHasData(item) {
                   <div class="space-y-6">
                     <div class="flex items-center" v-for="(nb,name) in item">
                       <input :id="`mobile-${name}`" :name="`${facetName}[]`"
-                             @change="manageFilters(filters,facetName,name,$event)"
+                             @change="manageFilters2(facetName,name,$event)"
                              :value="name"
                              type="checkbox"
                              class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">

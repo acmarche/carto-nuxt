@@ -10,6 +10,27 @@ defineProps({
 const filters = defineModel('filters')
 const menuOpen = defineModel('menuOpen')
 
+function manageFilters2(name, value, event) {
+  const filt = {localite: filters.value.localite, tags: filters.value.tags}
+  if (!event.target.checked) {
+    if (name === 'localite') {
+      filt.localite = null
+    } else {
+      const index = filt.tags.indexOf(value)
+      if (index !== -1) {
+        filt.tags.splice(index, 1)
+      }
+    }
+  } else {
+    if (name === 'localite') {
+      filt.localite = value
+    } else {
+      filt.tags.push(value)
+    }
+  }
+  filters.value = filt
+}
+
 function nameStartsWithUnderscore(name) {
   return !name.startsWith('_')
 }
@@ -60,7 +81,7 @@ function isChecked(name, value) {
               <div v-for="(nb,name) in item" class="flex items-center">
                 <input :id="`filter-${name}`" :name="`${facetName}[]`" :value="name"
                        :checked="isChecked(facetName,name)"
-                       @change="manageFilters(filters,facetName,name,$event)"
+                       @change="manageFilters2(facetName,name,$event)"
                        type="checkbox"
                        class="h-4 w-4 rounded border-carto-gray200 text-carto-pink focus:ring-carto-pink"
                 >
