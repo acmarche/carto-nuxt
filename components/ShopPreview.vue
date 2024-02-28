@@ -12,7 +12,6 @@ const {
   progress,
   isLoading,
 } = useLoadingIndicator();
-console.log(`Loaded ${progress.value}%`);
 
 function formatTextWithLineBreaks(text) {
   if (!text) return ''

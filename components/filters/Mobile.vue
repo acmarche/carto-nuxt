@@ -20,7 +20,6 @@ function capitalized(word) {
 }
 
 function itemHasData(item) {
-  console.log(item.values)
   return item.length > 0;
 }
 </script>

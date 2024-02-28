@@ -20,11 +20,10 @@ const iconSize = computed(() => {
   return [20, 20];
 })
 const init = () => {
-  console.log('Leaflet map initialized')
+
 };
 
 function showPreview(shop) {
-  console.log('preview ' + shop.slugname)
   shopRef.value = shop.slugname
   previewOpen.value = true
 }

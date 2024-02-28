@@ -15,7 +15,6 @@ function nameStartsWithUnderscore(name) {
 }
 
 function itemHasData(item) {
-  console.log(item.values)
   return item.length > 0;
 }
 
