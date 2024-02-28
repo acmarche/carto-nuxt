@@ -2,9 +2,6 @@
 export default defineNuxtConfig({
     devtools: {enabled: true},
     debug: false,
-    router: {
-        base: '/cartographie/'
-    },
     modules: ['@nuxtjs/tailwindcss', '@nuxtjs/google-fonts'],
     app: {
         head: {
@@ -33,6 +30,7 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         public: {
+            base: '/cartographie/',
             API_URL: process.env.API_URL,
         },
     },
