@@ -30,7 +30,6 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         public: {
-            base: '/cartographie/',
             API_URL: process.env.API_URL,
         },
     },
