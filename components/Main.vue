@@ -22,12 +22,11 @@ const shopRef = defineModel('shopRef', {
 
 </script>
 <template>
-  <div class="bg-white" id="content-result">
     <widgets-error :error="error.message" v-if="error"/>
-    <div @keydown.window.escape="menuOpen = false" v-if="data">
+    <main @esca="menuOpen = false" v-if="data">
       <filters-mobile v-model:filters="filters" v-model:menu-open="menuOpen" :data="data"/>
       <shop-preview v-model:preview-open="previewOpen" v-model:shop-ref="shopRef" :key="shopRef"/>
-      <main class="mx-auto max-w-full px-0 py-8 sm:px-6 sm:py-12 lg:px-8">
+      <div class="mx-auto max-w-full px-0 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div class="border-b border-gray-200 pb-6 px-4 sm:px-0">
           <h1 class="lobster-two-bold
         mx-auto max-w-max
@@ -66,7 +65,6 @@ const shopRef = defineModel('shopRef', {
                          v-model:shop-ref="shopRef"/>
           </div>
         </div>
-      </main>
-    </div>
-  </div>
+      </div>
+    </main>
 </template>

@@ -29,7 +29,7 @@ function showPreview(shop) {
 }
 </script>
 <template>
-  <div class="relative overflow-hidden rounded-xl "
+  <section class="relative overflow-hidden "
        v-show="mapOpen">
     <div class="mx-auto px-0 py-2 sm:px-4 sm:py-2  h-[60rem] md:h-[100rem]">
       <l-map ref="map" v-model:zoom="zoom" :center="coordinates" :use-global-leaflet="false" @ready="init">
@@ -47,5 +47,10 @@ function showPreview(shop) {
         </l-marker>
       </l-map>
     </div>
-  </div>
+  </section>
 </template>
+<style>
+.leaflet-container {
+	overflow: auto;
+	}
+</style>
