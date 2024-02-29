@@ -5,7 +5,7 @@ const mapOpen = defineModel('mapOpen')
 const listOpen = defineModel('listOpen')
 </script>
 <template>
-  <header class="fixed top-0 z-50 bg-carto-green h-16 w-full">
+  <header class="block z-20 bg-carto-green h-16 w-full">
     <nav class="shadow h-16 text-white flex items-center gap-3 justify-between">
       <h1 class="text-xl lg:text-3xl ml-3 lobster-two-bold">Cartographie</h1>
       <div class="mx-auto flex flex-row gap-4 roboto-medium">
