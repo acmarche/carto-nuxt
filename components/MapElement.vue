@@ -27,6 +27,7 @@ const init = () => {
 function showPreview(shop) {
   shopRef.value = shop.slugname
   previewOpen.value = true
+  window.scrollTo(0, 0);
 }
 </script>
 <template>
