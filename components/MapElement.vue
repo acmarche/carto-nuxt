@@ -14,10 +14,10 @@ const coordinates = ref([50.217845, 5.331049])
 const zoom = ref(14);
 const map = ref(null);
 const iconUrl = computed(() => {
-  return `/images/dog.svg`;
+  return `/images/map-pin.svg`;
 })
 const iconSize = computed(() => {
-  return [20, 20];
+  return [30, 30];
 })
 const init = () => {
 
