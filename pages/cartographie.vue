@@ -13,9 +13,7 @@ const mapOpen = defineModel('mapOpen', {
 })
 </script>
 <template>
-  <div id="app">
     <AppHeader v-model:menu-open="menuOpen" v-model:list-open="listOpen" v-model:map-open="mapOpen"/>
     <Main v-model:menu-open="menuOpen" v-model:list-open="listOpen" v-model:map-open="mapOpen"/>
     <AppFooter/>
-  </div>
 </template>

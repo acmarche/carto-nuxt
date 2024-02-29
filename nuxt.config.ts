@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     debug: false,
     modules: ['@nuxtjs/tailwindcss', '@nuxtjs/google-fonts'],
     app: {
+        rootId: 'app',
         head: {
             link: [
                 {
