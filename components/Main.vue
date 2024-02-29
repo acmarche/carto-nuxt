@@ -62,7 +62,7 @@ const shopRef = defineModel('shopRef', {
               <list-result :data="data"/>
             </div>
             <map-element :data="data" v-model:map-open="mapOpen" v-model:preview-open="previewOpen"
-                         v-model:shop-ref="shopRef"/>
+                         v-model:shop-ref="shopRef" v-model:filters="filters"/>
           </div>
         </div>
       </div>
