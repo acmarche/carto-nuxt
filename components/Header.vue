@@ -1,21 +1,26 @@
 <script setup>
 import {IconCurrentLocation, IconList, IconMap} from '@tabler/icons-vue';
+
 const mapOpen = defineModel('mapOpen')
 const listOpen = defineModel('listOpen')
 </script>
 <template>
-  <header class="relative z-50 bg-carto-green h-16">
+  <header class="fixed top-0 z-50 bg-carto-green h-16 w-full">
     <nav class="shadow h-16 text-white flex items-center gap-3 justify-between">
       <h1 class="text-xl lg:text-3xl ml-3 lobster-two-bold">Cartographie</h1>
       <div class="mx-auto flex flex-row gap-4 roboto-medium">
         <button class="flex flex-col flex-wrap justify-center items-center hover:text-carto-pink" type="button"
                 title="Carte"
-                @click="mapOpen = true; listOpen = false">
+                @click="mapOpen = true; listOpen = false"
+                v-if="listOpen">
           <IconMap/>
           <span class="text-base lg:text-lg">Carte</span>
         </button>
         <button class="flex flex-col flex-wrap justify-center items-center hover:text-carto-pink" type="button"
-                title="Liste" @click="listOpen = true; mapOpen = false">
+                title="Liste"
+                @click="listOpen = true;
+                mapOpen = false"
+                v-if="mapOpen">
           <IconList/>
           <span class="text-base lg:text-lg hover:text-carto-main">
                 Liste
