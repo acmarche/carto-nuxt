@@ -13,10 +13,7 @@ const mapOpen = defineModel('mapOpen', {
 })
 </script>
 <template>
-  <NuxtLayout>
-    <Header v-model:menu-open="menuOpen" v-model:list-open="listOpen" v-model:map-open="mapOpen"/>
-    <Main v-model:menu-open="menuOpen" v-model:list-open="listOpen" v-model:map-open="mapOpen"/>
-    <Footer/>
-    <NuxtPage/>
-  </NuxtLayout>
+  <Header v-model:menu-open="menuOpen" v-model:list-open="listOpen" v-model:map-open="mapOpen"/>
+  <Main v-model:menu-open="menuOpen" v-model:list-open="listOpen" v-model:map-open="mapOpen"/>
+  <Footer/>
 </template>

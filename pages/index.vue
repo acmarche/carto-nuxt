@@ -1,11 +1,19 @@
-<script setup lang="ts">
-const route = useRoute()
+<script setup>
+const menuOpen = defineModel('menuOpen', {
+  Type: Boolean,
+  default: false
+})
+const listOpen = defineModel('listOpen', {
+  Type: Boolean,
+  default: false
+})
+const mapOpen = defineModel('mapOpen', {
+  Type: Boolean,
+  default: true
+})
 </script>
-
 <template>
-  <div>
-    <h1>Nuxt Routing set up successfully!</h1>
-    <p>Current route: {{ route.path }}</p>
-    <a href="https://nuxt.com/docs/getting-started/routing" target="_blank">Learn more about Nuxt Routing</a>
-  </div>
+  <Header v-model:menu-open="menuOpen" v-model:list-open="listOpen" v-model:map-open="mapOpen"/>
+  <Main v-model:menu-open="menuOpen" v-model:list-open="listOpen" v-model:map-open="mapOpen"/>
+  <Footer/>
 </template>
