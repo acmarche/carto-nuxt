@@ -31,16 +31,16 @@ function showPreview(shop) {
 }
 
 const coordinates = ref([50.217845, 5.331049])
-onMounted(() => {
-  const localite = filters.value.localite
-  // const tags = filters.value['tags']
-
-//  console.log('tt',filters.value, localite, tags)
-  if (localite != null) {
-    console.log('move')
-    // coordinates.value = [data['hits'][0].latitude, data['hits'][0].longitude]
+watch(filters, async (newQuestion, oldQuestion) => {
+  const localite = newQuestion.localite
+  const tags = newQuestion['tags']
+  if (localite !== null || tags.length > 0) {
+    if (propos.data['hits'].length > 0) {
+      coordinates.value = [propos.data['hits'][0].latitude, propos.data['hits'][0].longitude]
+    }
+  } else {
+    const coordinates = ref([50.217845, 5.331049])
   }
-
 })
 </script>
 <template>
