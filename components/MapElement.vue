@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import "leaflet/dist/leaflet.css";
 import {LIcon, LMap, LMarker, LTileLayer, LTooltip} from "@vue-leaflet/vue-leaflet";
+
 defineProps({
   data: {
     type: Object,
@@ -30,8 +31,8 @@ function showPreview(shop) {
 </script>
 <template>
   <section class="relative overflow-hidden "
-       v-show="mapOpen">
-    <div class="mx-auto px-0 py-2 sm:px-4 sm:py-2  h-[60rem] md:h-[100rem]">
+           v-show="mapOpen">
+    <div class="mx-auto px-0 py-2 sm:px-4 sm:py-2 w-screen h-dvh">
       <l-map ref="map" v-model:zoom="zoom" :center="coordinates" :use-global-leaflet="false" @ready="init">
         <l-tile-layer
             ref="tileLayer"
@@ -51,6 +52,12 @@ function showPreview(shop) {
 </template>
 <style>
 .leaflet-container {
-	overflow: auto;
-	}
+  overflow: hidden;
+}
+
+.leaflet-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 </style>
