@@ -29,7 +29,7 @@ function showPreview(shop) {
 }
 </script>
 <template>
-  <div class="relative overflow-hidden rounded-xl border border-dashed border-gray-400 opacity-75 "
+  <div class="relative overflow-hidden rounded-xl "
        v-show="mapOpen">
     <div class="mx-auto px-0 py-2 sm:px-4 sm:py-2  h-[60rem] md:h-[100rem]">
       <l-map ref="map" v-model:zoom="zoom" :center="coordinates" :use-global-leaflet="false" @ready="init">
