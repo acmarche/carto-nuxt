@@ -6,7 +6,7 @@ defineProps({
   }
 })
 
-const tabOpen = ref(false)
+const tabOpen = ref(0)
 const menuOpen = defineModel('menuOpen')
 const filters = defineModel('filters')
 
@@ -42,6 +42,14 @@ function manageFilters2(name, value, event) {
     }
   }
   filters.value = filt
+}
+
+function toggleCollapsation(id) {
+  if (tabOpen.value === id) {
+    tabOpen.value = 0 //close
+  } else {
+    tabOpen.value = id
+  }
 }
 </script>
 <style scoped>
@@ -116,7 +124,7 @@ function manageFilters2(name, value, event) {
         <!-- Filters -->
         <form class="mt-4">
 
-          <template v-for="(item,facetName) in data.facetDistribution">
+          <template v-for="(item,facetName, index) in data.facetDistribution">
             <div class="border-t border-gray-200 pb-4 pt-4" v-if="nameStartsWithUnderscore(facetName)">
               <fieldset>
                 <legend class="w-full px-2">
@@ -124,7 +132,7 @@ function manageFilters2(name, value, event) {
                   <button type="button"
                           class="flex w-full items-center justify-between p-2 text-gray-400 hover:text-gray-500"
                           aria-controls="filter-section-0" aria-expanded="false"
-                          @click="tabOpen = !tabOpen;">
+                          @click="toggleCollapsation(index)">
                     <span class="text-sm font-medium text-gray-900">{{ capitalized(facetName) }}</span>
                     <span class="ml-6 flex h-7 items-center">
                                               <!--
@@ -136,7 +144,7 @@ function manageFilters2(name, value, event) {
                                                    fill="currentColor"
                                                    aria-hidden="true"
                                                    x-state:on="Open" x-state:off="Closed"
-                                                   :class="{ '-rotate-180': tabOpen, 'rotate-0': !(tabOpen) }">
+                                                   :class="tabOpen === 0 ? 'rotate-0': '-rotate-180'">
                                                 <path fill-rule="evenodd"
                                                       d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
                                                       clip-rule="evenodd"/>
@@ -144,7 +152,7 @@ function manageFilters2(name, value, event) {
                                         </span>
                   </button>
                 </legend>
-                <div class="px-4 pb-2 pt-4" id="filter-section-0" v-show="tabOpen">
+                <div class="px-4 pb-2 pt-4" id="filter-section-0" v-show="tabOpen === index">
                   <div class="space-y-6">
                     <div class="flex items-center" v-for="(nb,name) in item">
                       <input :id="`mobile-${name}`" :name="`${facetName}[]`"
