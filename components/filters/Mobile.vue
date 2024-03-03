@@ -59,44 +59,6 @@ function toggleCollapsation(id) {
            x-transition:leave="transition-opacity ease-linear duration-300"
            x-transition:leave-start="opacity-100"
            x-transition:leave-end="opacity-0"-->
-<style>
-.trans1-enter-from {
-  @apply opacity-0
-}
-.trans1-enter-active {
-  @apply transition-opacity ease-linear duration-300
-}
-.trans1-enter-to {
-  @apply opacity-100
-}
-.trans1-leave-from {
-  @apply opacity-100
-}
-.trans1-leave-active {
-  @apply transition-opacity ease-linear duration-300
-}
-.trans1-leave-to {
-  @apply opacity-0
-}
-.trans2-enter-from {
-  @apply translate-x-full
-}
-.trans2-enter-active {
-  @apply transition ease-in-out duration-300 transform
-}
-.trans2-enter-to {
-  @apply translate-x-0
-}
-.trans2-leave-from {
-  @apply translate-x-0
-}
-.trans2-leave-active {
-  @apply transition ease-in-out duration-300 transform
-}
-.trans2-leave-to {
-  @apply translate-x-full
-}
-</style>
 <!-- x-transition:enter="transition ease-in-out duration-300 transform"
            x-transition:enter-start="translate-x-full"
            x-transition:enter-end="translate-x-0"
@@ -122,7 +84,12 @@ function toggleCollapsation(id) {
         From: "opacity-100"
         To: "opacity-0"
     -->
-    <Transition name="trans1">
+    <Transition enter-active-class="transition-opacity ease-linear duration-300"
+                enter-from-class="opacity-0"
+                enter-to-class="opacity-100"
+                leave-active-class="transition-opacity ease-linear duration-300"
+                leave-from-class="opacity-100"
+                leave-to-class="opacity-0">
       <div v-show="menuOpen" class="fixed inset-0 bg-carto-main bg-opacity-25 backdrop-blur-sm"></div>
     </Transition>
     <div class="fixed inset-0 z-40 flex">
@@ -136,35 +103,41 @@ function toggleCollapsation(id) {
           From: "translate-x-0"
           To: "translate-x-full"
       -->
-      <div v-show="menuOpen"
-           class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl">
-        <div class="flex items-center justify-between px-4">
-          <h2 class="text-lg font-medium text-carto-main">Filtres</h2>
-          <button type="button"
-                  class="-mr-2 flex h-10 w-10 items-center justify-center p-2 text-carto-gray200 hover:text-carto-gray300"
-                  @click="menuOpen = false">
-            <span class="sr-only">Fermer le menu</span>
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                 stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-          </button>
-        </div>
+      <Transition enter-active-class="transition ease-in-out duration-300 transform"
+                  enter-from-class="translate-x-full"
+                  enter-to-class="translate-x-0"
+                  leave-active-class="transition ease-in-out duration-300 transform"
+                  leave-from-class="translate-x-0"
+                  leave-to-class="translate-x-full">
+        <div v-show="menuOpen"
+             class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl">
+          <div class="flex items-center justify-between px-4">
+            <h2 class="text-lg font-medium text-carto-main">Filtres</h2>
+            <button type="button"
+                    class="-mr-2 flex h-10 w-10 items-center justify-center p-2 text-carto-gray200 hover:text-carto-gray300"
+                    @click="menuOpen = false">
+              <span class="sr-only">Fermer le menu</span>
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                   stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
 
-        <!-- Filters -->
-        <form class="mt-4">
+          <!-- Filters -->
+          <form class="mt-4">
 
-          <template v-for="(item,facetName, index) in data.facetDistribution">
-            <div class="border-t border-gray-200 pb-4 pt-4" v-if="nameStartsWithUnderscore(facetName)">
-              <fieldset>
-                <legend class="w-full px-2">
-                  <!-- Expand/collapse section button -->
-                  <button type="button"
-                          class="flex w-full items-center justify-between p-2 text-gray-400 hover:text-gray-500"
-                          aria-controls="filter-section-0" aria-expanded="false"
-                          @click="toggleCollapsation(index)">
-                    <span class="text-sm font-medium text-gray-900">{{ capitalized(facetName) }}</span>
-                    <span class="ml-6 flex h-7 items-center">
+            <template v-for="(item,facetName, index) in data.facetDistribution">
+              <div class="border-t border-gray-200 pb-4 pt-4" v-if="nameStartsWithUnderscore(facetName)">
+                <fieldset>
+                  <legend class="w-full px-2">
+                    <!-- Expand/collapse section button -->
+                    <button type="button"
+                            class="flex w-full items-center justify-between p-2 text-gray-400 hover:text-gray-500"
+                            aria-controls="filter-section-0" aria-expanded="false"
+                            @click="toggleCollapsation(index)">
+                      <span class="text-sm font-medium text-gray-900">{{ capitalized(facetName) }}</span>
+                      <span class="ml-6 flex h-7 items-center">
                                               <!--
                                                 Expand/collapse icon, toggle classes based on section open state.
 
@@ -180,27 +153,28 @@ function toggleCollapsation(id) {
                                                       clip-rule="evenodd"/>
                                               </svg>
                                         </span>
-                  </button>
-                </legend>
-                <div class="px-4 pb-2 pt-4" id="filter-section-0" v-show="tabOpen === index">
-                  <div class="space-y-6">
-                    <div class="flex items-center" v-for="(nb,name) in item">
-                      <input :id="`mobile-${name}`" :name="`${facetName}[]`"
-                             @change="manageFilters2(facetName,name,$event)"
-                             :value="name"
-                             type="checkbox"
-                             class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-                      <label :for="`mobile-${name}`" class="ml-3 text-sm text-gray-500">
-                        {{ name }} ({{ nb }})
-                      </label>
+                    </button>
+                  </legend>
+                  <div class="px-4 pb-2 pt-4" id="filter-section-0" v-show="tabOpen === index">
+                    <div class="space-y-6">
+                      <div class="flex items-center" v-for="(nb,name) in item">
+                        <input :id="`mobile-${name}`" :name="`${facetName}[]`"
+                               @change="manageFilters2(facetName,name,$event)"
+                               :value="name"
+                               type="checkbox"
+                               class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                        <label :for="`mobile-${name}`" class="ml-3 text-sm text-gray-500">
+                          {{ name }} ({{ nb }})
+                        </label>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </fieldset>
-            </div>
-          </template>
-        </form>
-      </div>
+                </fieldset>
+              </div>
+            </template>
+          </form>
+        </div>
+      </Transition>
     </div>
   </div>
 </template>
