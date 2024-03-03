@@ -6,7 +6,7 @@ const propos = defineProps({
   data: {
     type: Object,
     required: true
-  },
+  }
 })
 const mapOpen = defineModel('mapOpen')
 const previewOpen = defineModel('previewOpen')
@@ -31,9 +31,9 @@ function showPreview(shop) {
 }
 
 const coordinates = ref([50.217845, 5.331049])
-watch(filters, async (newQuestion, oldQuestion) => {
-  const localite = newQuestion.localite
-  const tags = newQuestion['tags']
+watch(filters, async (newValue) => {
+  const localite = newValue.localite
+  const tags = newValue['tags']
   if (localite !== null || tags.length > 0) {
     if (propos.data['hits'].length > 0) {
       coordinates.value = [propos.data['hits'][0].latitude, propos.data['hits'][0].longitude]
