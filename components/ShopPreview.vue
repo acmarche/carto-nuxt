@@ -1,6 +1,5 @@
 <script setup>
 import {IconNavigation} from "@tabler/icons-vue";
-
 const previewOpen = defineModel('previewOpen')
 const shopRef = defineModel('shopRef')
 const {
@@ -32,7 +31,7 @@ const {
                 leave-to-class="opacity-0">
       <div v-show="previewOpen" class="fixed inset-0 bg-carto-main bg-opacity-25 backdrop-blur-sm"></div>
     </Transition>
-    <div class="fixed inset-0 z-40 flex">
+    <div class="fixed inset-0 flex">
       <!--
         Off-canvas menu, show/hide based on off-canvas menu state.
 

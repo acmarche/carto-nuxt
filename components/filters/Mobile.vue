@@ -58,7 +58,7 @@ function toggleCollapsation(id) {
 @click.outside="menuOpen = false"
   Off-canvas menu for mobile, show/hide based on off-canvas menu state.
 -->
-  <div v-show="menuOpen" class="relative z-40 lg:hidden " role="dialog" aria-modal="true">
+  <div v-show="menuOpen" class="relative z-[1000] lg:hidden " role="dialog" aria-modal="true">
     <!--
       Off-canvas menu backdrop, show/hide based on off-canvas menu state.
 
@@ -77,7 +77,7 @@ function toggleCollapsation(id) {
                 leave-to-class="opacity-0">
       <div v-show="menuOpen" class="fixed inset-0 bg-carto-main bg-opacity-25 backdrop-blur-sm"></div>
     </Transition>
-    <div class="fixed inset-0 z-40 flex">
+    <div class="fixed inset-0  flex">
       <!--
         Off-canvas menu, show/hide based on off-canvas menu state.
 
