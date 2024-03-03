@@ -52,28 +52,13 @@ function toggleCollapsation(id) {
   }
 }
 </script>
-<!--
-   x-transition:enter="transition-opacity ease-linear duration-300"
-           x-transition:enter-start="opacity-0"
-           x-transition:enter-end="opacity-100"
-           x-transition:leave="transition-opacity ease-linear duration-300"
-           x-transition:leave-start="opacity-100"
-           x-transition:leave-end="opacity-0"-->
-<!-- x-transition:enter="transition ease-in-out duration-300 transform"
-           x-transition:enter-start="translate-x-full"
-           x-transition:enter-end="translate-x-0"
-           x-transition:leave="transition ease-in-out duration-300 transform"
-           x-transition:leave-start="translate-x-0"
-           x-transition:leave-end="translate-x-full"
-           -->
 <template>
   <!--
   Mobile filter dialog
 @click.outside="menuOpen = false"
   Off-canvas menu for mobile, show/hide based on off-canvas menu state.
 -->
-  <div v-show="menuOpen" class="relative z-40 lg:hidden " role="dialog" aria-modal="true"
-  >
+  <div v-show="menuOpen" class="relative z-40 lg:hidden " role="dialog" aria-modal="true">
     <!--
       Off-canvas menu backdrop, show/hide based on off-canvas menu state.
 
@@ -126,7 +111,6 @@ function toggleCollapsation(id) {
 
           <!-- Filters -->
           <form class="mt-4">
-
             <template v-for="(item,facetName, index) in data.facetDistribution">
               <div class="border-t border-gray-200 pb-4 pt-4" v-if="nameStartsWithUnderscore(facetName)">
                 <fieldset>
