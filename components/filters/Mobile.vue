@@ -52,16 +52,58 @@ function toggleCollapsation(id) {
   }
 }
 </script>
-<style scoped>
-/* Utilisation des classes de transition */
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s;
+<!--
+   x-transition:enter="transition-opacity ease-linear duration-300"
+           x-transition:enter-start="opacity-0"
+           x-transition:enter-end="opacity-100"
+           x-transition:leave="transition-opacity ease-linear duration-300"
+           x-transition:leave-start="opacity-100"
+           x-transition:leave-end="opacity-0"-->
+<style>
+.trans1-enter-from {
+  @apply opacity-0
 }
-
-.fade-enter, .fade-leave-to {
-  opacity: 0;
+.trans1-enter-active {
+  @apply transition-opacity ease-linear duration-300
+}
+.trans1-enter-to {
+  @apply opacity-100
+}
+.trans1-leave-from {
+  @apply opacity-100
+}
+.trans1-leave-active {
+  @apply transition-opacity ease-linear duration-300
+}
+.trans1-leave-to {
+  @apply opacity-0
+}
+.trans2-enter-from {
+  @apply translate-x-full
+}
+.trans2-enter-active {
+  @apply transition ease-in-out duration-300 transform
+}
+.trans2-enter-to {
+  @apply translate-x-0
+}
+.trans2-leave-from {
+  @apply translate-x-0
+}
+.trans2-leave-active {
+  @apply transition ease-in-out duration-300 transform
+}
+.trans2-leave-to {
+  @apply translate-x-full
 }
 </style>
+<!-- x-transition:enter="transition ease-in-out duration-300 transform"
+           x-transition:enter-start="translate-x-full"
+           x-transition:enter-end="translate-x-0"
+           x-transition:leave="transition ease-in-out duration-300 transform"
+           x-transition:leave-start="translate-x-0"
+           x-transition:leave-end="translate-x-full"
+           -->
 <template>
   <!--
   Mobile filter dialog
@@ -80,14 +122,8 @@ function toggleCollapsation(id) {
         From: "opacity-100"
         To: "opacity-0"
     -->
-    <Transition>
-      <div v-show="menuOpen" class="fixed inset-0 bg-carto-main bg-opacity-25 backdrop-blur-sm"
-           x-transition:enter="transition-opacity ease-linear duration-300"
-           x-transition:enter-start="opacity-0"
-           x-transition:enter-end="opacity-100"
-           x-transition:leave="transition-opacity ease-linear duration-300"
-           x-transition:leave-start="opacity-100"
-           x-transition:leave-end="opacity-0"></div>
+    <Transition name="trans1">
+      <div v-show="menuOpen" class="fixed inset-0 bg-carto-main bg-opacity-25 backdrop-blur-sm"></div>
     </Transition>
     <div class="fixed inset-0 z-40 flex">
       <!--
@@ -101,13 +137,7 @@ function toggleCollapsation(id) {
           To: "translate-x-full"
       -->
       <div v-show="menuOpen"
-           class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl"
-           x-transition:enter="transition ease-in-out duration-300 transform"
-           x-transition:enter-start="translate-x-full"
-           x-transition:enter-end="translate-x-0"
-           x-transition:leave="transition ease-in-out duration-300 transform"
-           x-transition:leave-start="translate-x-0"
-           x-transition:leave-end="translate-x-full">
+           class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl">
         <div class="flex items-center justify-between px-4">
           <h2 class="text-lg font-medium text-carto-main">Filtres</h2>
           <button type="button"
@@ -144,7 +174,7 @@ function toggleCollapsation(id) {
                                                    fill="currentColor"
                                                    aria-hidden="true"
                                                    x-state:on="Open" x-state:off="Closed"
-                                                   :class="tabOpen === 0 ? 'rotate-0': '-rotate-180'">
+                                                   :class="tabOpen === index ? 'rotate-0': '-rotate-180'">
                                                 <path fill-rule="evenodd"
                                                       d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
                                                       clip-rule="evenodd"/>
