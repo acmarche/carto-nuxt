@@ -7,18 +7,9 @@ function refreshGeolLoc() {
   resume()
 }
 
-const menuOpen = defineModel('menuOpen', {
-  Type: Boolean,
-  default: false
-})
-const listOpen = defineModel('listOpen', {
-  Type: Boolean,
-  default: false
-})
-const mapOpen = defineModel('mapOpen', {
-  Type: Boolean,
-  default: true
-})
+const menuOpen = ref(false)
+const listOpen = ref(false)
+const mapOpen = ref(true)
 </script>
 <template>
   <AppHeader v-model:menu-open="menuOpen" v-model:list-open="listOpen" v-model:map-open="mapOpen"
