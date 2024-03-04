@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {IconDeviceMobile, IconMail, IconPhone, IconWheelchair} from '@tabler/icons-vue';
+import {prettyPhone} from "~/composables/stringUtils";
 
 const {shop} = defineProps<{
   shop: { type: Object, required: true },
