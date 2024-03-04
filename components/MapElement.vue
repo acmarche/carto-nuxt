@@ -6,9 +6,12 @@ const propos = defineProps({
   data: {
     type: Object,
     required: true
+  },
+  mapOpen: {
+    type: Boolean,
+    required: true
   }
 })
-const mapOpen = defineModel('mapOpen')
 const previewOpen = defineModel('previewOpen')
 const shopRef = defineModel('shopRef')
 const filters = defineModel('filters')

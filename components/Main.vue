@@ -1,5 +1,7 @@
 <script setup>
 const filters = ref({localite: null, tags: [], coordinates: null})
+const shopRef = ref(null)
+const previewOpen = ref(false)
 const {
   pending,
   data,
@@ -13,17 +15,9 @@ const propos = defineProps({
   },
 })
 
-const previewOpen = defineModel('previewOpen', {
-  Type: Boolean,
-  default: false
-})
 const menuOpen = defineModel('menuOpen')
 const mapOpen = defineModel('mapOpen')
 const listOpen = defineModel('listOpen')
-const shopRef = defineModel('shopRef', {
-  type: String,
-  default: null
-})
 
 watch(() => propos.coords, (newValue, oldValue) => {
   if (newValue.accuracy > 0) {
@@ -37,7 +31,7 @@ watch(() => propos.coords, (newValue, oldValue) => {
   <WidgetsError :error="error.message" v-if="error"/>
   <main @esca="menuOpen = false" v-if="data">
     <FiltersMobile v-model:filters="filters" v-model:menu-open="menuOpen" :data="data"/>
-    <ShopPreview v-model:preview-open="previewOpen" v-model:shop-ref="shopRef" :key="shopRef"/>
+    <ShopPreview v-model:preview-open="previewOpen" :shop-ref="shopRef" :key="shopRef"/>
     <div class="mx-auto max-w-full px-0 py-8 sm:px-6 sm:py-12 lg:px-8">
       <div class="border-b border-gray-200 pb-6 px-4 sm:px-0">
         <h1 class="lobster-two-bold
@@ -78,7 +72,7 @@ watch(() => propos.coords, (newValue, oldValue) => {
           <div v-show="listOpen">
             <ListResult :data="data"/>
           </div>
-          <MapElement :data="data" v-model:map-open="mapOpen" v-model:preview-open="previewOpen"
+          <MapElement :data="data" :map-open="mapOpen" v-model:preview-open="previewOpen"
                       v-model:shop-ref="shopRef" v-model:filters="filters"/>
         </div>
       </div>

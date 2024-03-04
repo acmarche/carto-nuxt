@@ -1,6 +1,6 @@
-export default (slug: Ref) => {
+export default (slug?: String) => {
     const config = useRuntimeConfig()
-    if (slug.value == null) {
+    if (slug == null) {
         return {
             pendingShop: null,
             shop: null,
@@ -9,7 +9,7 @@ export default (slug: Ref) => {
     }
     const {pending: pendingShop, data: shop, error: errorShop} =
         useFetch(
-            `${config.public.API_URL}/bottin/fichebyslugname/${slug.value}`, {}
+            `${config.public.API_URL}/bottin/fichebyslugname/${slug}`, {}
         )
     return {
         pendingShop,
