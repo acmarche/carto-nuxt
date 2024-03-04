@@ -1,23 +1,20 @@
-export default (filters: Ref, name: String, value: String, event: Event) => {
-    return function manageFilters(name: String, value: String, event: Event) {
-        const filt = {localite: filters.value.localite, tags: filters.value.tags}
-        // @ts-ignore
-        if (!event.target.checked) {
-            if (name === 'localite') {
-                filt.localite = null
-            } else {
-                const index = filt.tags.indexOf(value)
-                if (index !== -1) {
-                    filt.tags.splice(index, 1)
-                }
-            }
+export default function manageFilters(filters: Ref, name: String, value: String, event: Event): Ref {
+    // @ts-ignore
+    if (!event.target.checked) {
+        if (name === 'localite') {
+            filters.value.localite = null
         } else {
-            if (name === 'localite') {
-                filt.localite = value
-            } else {
-                filt.tags.push(value)
+            const index = filters.value.tags.indexOf(value)
+            if (index !== -1) {
+                filters.value.tags.splice(index, 1)
             }
         }
-        filters.value = filt
+    } else {
+        if (name === 'localite') {
+            filters.value.localite = value
+        } else {
+            filters.value.tags.push(value)
+        }
     }
+    return filters
 }
