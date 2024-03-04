@@ -30,9 +30,9 @@ const shopRef = defineModel('shopRef', {
 
 watch(() => propos.coords, (newValue, oldValue) => {
   if (newValue.accuracy > 0) {
-    const filt = {localite: filters.value.localite, tags: filters.value.tags}
-    filt.coordinates = {latitude: newValue.latitude, longitude: newValue.longitude}
-    filters.value = filt
+    const filtersSave = {localite: filters.value.localite, tags: filters.value.tags}
+    filtersSave.coordinates = {latitude: newValue.latitude, longitude: newValue.longitude}
+    filters.value = filtersSave
   }
 })
 </script>
