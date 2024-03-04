@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {IconDeviceMobile, IconLocation, IconMail, IconPhone, IconWheelchair} from '@tabler/icons-vue';
+import {IconDeviceMobile, IconMail, IconPhone, IconWheelchair} from '@tabler/icons-vue';
 
 const {shop} = defineProps<{
   shop: { type: Object, required: true },
@@ -15,7 +15,7 @@ function prettyPhone(phone: string) {
       <span class=" lobster-two-bold">Contactez-nous</span>
     </h4>
 
-    <p v-if="shop.telephone" class="flex flex-row gap-2" title="Téléphone">
+    <p v-if="shop.telephone" class="flex flex-row justify-between p-2" title="Téléphone">
       <IconPhone class="h-8 w-8" aria-hidden="true"/>
       <a :href="`tel:${shop.telephone}`">{{ shop.telephone }}</a>
     </p>
