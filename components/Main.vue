@@ -37,10 +37,10 @@ watch(() => propos.coords, (newValue, oldValue) => {
 })
 </script>
 <template>
-  <widgets-error :error="error.message" v-if="error"/>
+  <WidgetsError :error="error.message" v-if="error"/>
   <main @esca="menuOpen = false" v-if="data">
-    <filters-mobile v-model:filters="filters" v-model:menu-open="menuOpen" :data="data"/>
-    <shop-preview v-model:preview-open="previewOpen" v-model:shop-ref="shopRef" :key="shopRef"/>
+    <FiltersMobile v-model:filters="filters" v-model:menu-open="menuOpen" :data="data"/>
+    <ShopPreview v-model:preview-open="previewOpen" v-model:shop-ref="shopRef" :key="shopRef"/>
     <div class="mx-auto max-w-full px-0 py-8 sm:px-6 sm:py-12 lg:px-8">
       <div class="border-b border-gray-200 pb-6 px-4 sm:px-0">
         <h1 class="lobster-two-bold
@@ -72,17 +72,17 @@ watch(() => propos.coords, (newValue, oldValue) => {
       <WidgetsLoader v-if="pending"/>
       <div class="pt-8 grid grid-cols-1 lg:gap-x-8 lg:grid-cols-[auto_minmax(0,1fr)]" v-if="data">
         <aside>
-          <filters-xl v-model:filters="filters" v-model:menu-open="menuOpen" :data="data"/>
+          <FiltersXl v-model:filters="filters" v-model:menu-open="menuOpen" :data="data"/>
         </aside>
         <div class="mt-6 lg:mt-0">
           <h2 class="text-xl lg:text-3xl text-carto-pink py-3 px-3" id="count-result">
             {{ data.count }} commerces trouvés
           </h2>
           <div v-show="listOpen">
-            <list-result :data="data"/>
+            <ListResult :data="data"/>
           </div>
-          <map-element :data="data" v-model:map-open="mapOpen" v-model:preview-open="previewOpen"
-                       v-model:shop-ref="shopRef" v-model:filters="filters"/>
+          <MapElement :data="data" v-model:map-open="mapOpen" v-model:preview-open="previewOpen"
+                      v-model:shop-ref="shopRef" v-model:filters="filters"/>
         </div>
       </div>
     </div>
