@@ -9,12 +9,6 @@ defineProps({
 const tabOpen = ref(0)
 const menuOpen = defineModel('menuOpen')
 const filters = defineModel('filters')
-defineProps({
-  data: {
-    type: Object,
-    required: true
-  }
-})
 
 function manageFilters2(name, value, event) {
   if (!event.target.checked) {
