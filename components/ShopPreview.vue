@@ -1,17 +1,12 @@
 <script setup>
 import {IconNavigation} from "@tabler/icons-vue";
 const previewOpen = defineModel('previewOpen')
-const propos = defineProps({
-  shopRef: {
-    type: String,
-    required: null
-  },
-})
+const shopRef = defineModel('shopRef')
 const {
   pendingShop,
   shop,
   errorShop
-} = shopGet(propos.shopRef)
+} = shopGet(shopRef)
 </script>
 <template>
   <!--
