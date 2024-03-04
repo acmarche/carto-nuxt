@@ -9,26 +9,30 @@ defineProps({
 const tabOpen = ref(0)
 const menuOpen = defineModel('menuOpen')
 const filters = defineModel('filters')
+defineProps({
+  data: {
+    type: Object,
+    required: true
+  }
+})
 
 function manageFilters2(name, value, event) {
-  const filt = {localite: filters.value.localite, tags: filters.value.tags}
   if (!event.target.checked) {
     if (name === 'localite') {
-      filt.localite = null
+      filters.value.localite = null
     } else {
-      const index = filt.tags.indexOf(value)
+      const index = filters.value.tags.indexOf(value)
       if (index !== -1) {
-        filt.tags.splice(index, 1)
+        filters.value.tags.splice(index, 1)
       }
     }
   } else {
     if (name === 'localite') {
-      filt.localite = value
+      filters.value.localite = value
     } else {
-      filt.tags.push(value)
+      filters.value.tags.push(value)
     }
   }
-  filters.value = filt
 }
 
 function toggleCollapsation(id) {

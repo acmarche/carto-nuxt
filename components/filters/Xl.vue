@@ -1,34 +1,32 @@
 <script setup>
 import {IconFilter} from '@tabler/icons-vue'
 
+const filters = defineModel('filters')
 defineProps({
   data: {
     type: Object,
     required: true
   }
 })
-const filters = defineModel('filters')
 const menuOpen = defineModel('menuOpen')
 
 function manageFilters2(name, value, event) {
-  const filt = {localite: filters.value.localite, tags: filters.value.tags}
   if (!event.target.checked) {
     if (name === 'localite') {
-      filt.localite = null
+      filters.value.localite = null
     } else {
-      const index = filt.tags.indexOf(value)
+      const index = filters.value.tags.indexOf(value)
       if (index !== -1) {
-        filt.tags.splice(index, 1)
+        filters.value.tags.splice(index, 1)
       }
     }
   } else {
     if (name === 'localite') {
-      filt.localite = value
+      filters.value.localite = value
     } else {
-      filt.tags.push(value)
+      filters.value.tags.push(value)
     }
   }
-  filters.value = filt
 }
 
 function isChecked(name, value) {
@@ -68,7 +66,7 @@ function isChecked(name, value) {
               <div v-for="(nb,name) in item" class="flex items-center">
                 <input :id="`filter-${name}`" :name="`${facetName}[]`" :value="name"
                        :checked="isChecked(facetName,name)"
-                       @change="manageFilters2(facetName,name,$event)"
+                       @change="manageFilters2(filters,facetName,name,$event)"
                        type="checkbox"
                        class="h-4 w-4 rounded border-carto-gray200 text-carto-pink focus:ring-carto-pink"
                 >

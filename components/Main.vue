@@ -1,8 +1,5 @@
 <script setup>
-const filters = defineModel('filters', {
-  Type: Object,
-  default: {localite: null, tags: [], coordinates: null}
-})
+const filters = ref({localite: null, tags: [], coordinates: null})
 const {
   pending,
   data,
