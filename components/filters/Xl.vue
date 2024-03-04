@@ -1,5 +1,5 @@
 <script setup>
-import {IconFilter} from '@tabler/icons-vue';
+import {IconFilter} from '@tabler/icons-vue'
 
 defineProps({
   data: {
@@ -29,19 +29,6 @@ function manageFilters2(name, value, event) {
     }
   }
   filters.value = filt
-}
-
-function nameStartsWithUnderscore(name) {
-  return !name.startsWith('_')
-}
-
-function itemHasData(item) {
-  return item.length > 0;
-}
-
-function capitalized(word) {
-  return word.charAt(0).toUpperCase()
-      + word.slice(1)
 }
 
 function isChecked(name, value) {

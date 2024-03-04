@@ -4,10 +4,6 @@ import {IconDeviceMobile, IconMail, IconPhone, IconWheelchair} from '@tabler/ico
 const {shop} = defineProps<{
   shop: { type: Object, required: true },
 }>()
-
-function prettyPhone(phone: string) {
-  return `+32 ${phone}`
-}
 </script>
 <template>
   <section class="flex flex-col">

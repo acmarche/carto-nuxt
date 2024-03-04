@@ -10,19 +10,6 @@ const tabOpen = ref(0)
 const menuOpen = defineModel('menuOpen')
 const filters = defineModel('filters')
 
-function nameStartsWithUnderscore(name) {
-  return !name.startsWith('_');
-}
-
-function capitalized(word) {
-  return word.charAt(0).toUpperCase()
-      + word.slice(1)
-}
-
-function itemHasData(item) {
-  return item.length > 0;
-}
-
 function manageFilters2(name, value, event) {
   const filt = {localite: filters.value.localite, tags: filters.value.tags}
   if (!event.target.checked) {
