@@ -9,14 +9,14 @@ const {shop} = defineProps<{
 <template>
   <section class="flex flex-col">
 
-    <p v-for="secteur in shop.classements" class="flex flex-row items-center  gap-2">
+    <p v-for="secteur in shop.classements" class="flex flex-row items-center  gap-2" :key="secteur.id">
       <IconCat class="h-8 w-8" aria-hidden="true"/>
-    <span>{{ secteur.name}}</span>
+      <span>{{ secteur.name }}</span>
     </p>
 
-    <p v-for="tag in shop.tags" class="flex flex-row items-center gap-2">
+    <p v-for="(tag,key,index) in shop.tags" class="flex flex-row items-center gap-2" :key="index">
       <IconCat class="h-8 w-8" aria-hidden="true"/>
-    <span>{{ tag}}</span>
+      <span>{{ tag }}</span>
     </p>
 
   </section>

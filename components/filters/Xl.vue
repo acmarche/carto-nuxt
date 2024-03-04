@@ -41,14 +41,14 @@ function isChecked(name, value) {
 
   <div class="hidden lg:block lg:min-w-36">
     <form class="space-y-10 divide-y divide-gray-200">
-      <template v-for="(item,facetName) in data.facetDistribution">
+      <template v-for="(item,facetName,index) in data.facetDistribution" :key="index">
         <div class="[&:not(:first-child)]:pt-10" v-if="nameStartsWithUnderscore(facetName)">
           <fieldset>
             <legend class="block text-sm font-medium text-gray-900">
               {{ capitalized(facetName) }}
             </legend>
             <div class="space-y-3 pt-6">
-              <div v-for="(nb,name) in item" class="flex items-center">
+              <div v-for="(nb,name) in item" class="flex items-center" :key="item.name">
                 <input :id="`filter-${name}`" :name="`${facetName}[]`" :value="name"
                        :checked="isChecked(facetName,name)"
                        @change="manageFilters2(facetName,name,$event)"

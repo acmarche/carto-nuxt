@@ -81,7 +81,7 @@ function toggleCollapsation(id) {
 
           <!-- Filters -->
           <form class="mt-4">
-            <template v-for="(item,facetName, index) in data.facetDistribution">
+            <template v-for="(item,facetName, index) in data.facetDistribution" :key="index">
               <div class="border-t border-gray-200 pb-4 pt-4" v-if="nameStartsWithUnderscore(facetName)">
                 <fieldset>
                   <legend class="w-full px-2">
@@ -111,7 +111,7 @@ function toggleCollapsation(id) {
                   </legend>
                   <div class="px-4 pb-2 pt-4" id="filter-section-0" v-show="tabOpen === index">
                     <div class="space-y-6">
-                      <div class="flex items-center" v-for="(nb,name) in item">
+                      <div class="flex items-center" v-for="(nb,name) in item" :key="item.name">
                         <input :id="`mobile-${name}`" :name="`${facetName}[]`"
                                @change="manageFilters2(facetName,name,$event)"
                                :value="name"
