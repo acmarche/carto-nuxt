@@ -42,7 +42,7 @@ watch(() => propos.coords, (newValue, oldValue) => {
         bg-[length:250px_100%] bg-no-repeat
         px-10 py-1 text-center text-4xl font-bold
         animate-shimmer">
-          Du local, du circuit-cour, du solidaire...
+          Du local, du circuit-court, du solidaire...
         </h1>
         <h1 class="text-4xl font-bold lobster-two-bold tracking-tight text-carto-pink">Carte dynamique</h1>
         <p class="mt-4 text-2xl text-carto-main lobster-two-regular-italic">
