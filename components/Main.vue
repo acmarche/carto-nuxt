@@ -58,7 +58,7 @@ watch(() => propos.coords, (newValue, oldValue) => {
         </div>
       </div>
       <div class="pt-8 grid grid-cols-1 lg:gap-x-8 lg:grid-cols-[auto_minmax(0,1fr)]" v-if="data">
-        <FiltersXl v-model:filters="filters" v-model:menu-open="menuOpen" :data="data"/>
+        <FiltersXl v-model:filters="filters" v-model:menu-open="menuOpen" :data/>
         <div class="mt-6 lg:mt-0">
           <h2 class="text-xl lg:text-3xl text-carto-pink py-3 px-3" id="count-result">
             {{ data.count }} commerces trouvés
