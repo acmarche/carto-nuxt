@@ -7,6 +7,12 @@ export function itemHasData(item: Array<any>) {
 }
 
 export function capitalized(word: String) {
+    if(word == 'localite')
+        word = 'Localité'
+
+    if(word == 'tags')
+        word = 'Filières'
+
     return word.charAt(0).toUpperCase()
         + word.slice(1)
 }
