@@ -1,6 +1,5 @@
 <script setup>
 import 'leaflet/dist/leaflet.css'
-import 'vue-leaflet-markercluster/dist/style.css'
 
 const propos = defineProps({
   data: {
