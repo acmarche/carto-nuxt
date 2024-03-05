@@ -64,10 +64,10 @@ watch(() => propos.coords, (newValue, oldValue) => {
             {{ data.count }} commerces trouvés
           </h2>
           <div v-show="listOpen">
-            <ListResult :data="data"/>
+            <ListResult :data/>
           </div>
-          <MapElement :data="data" :map-open="mapOpen" v-model:preview-open="previewOpen"
-                      v-model:shop-ref="shopRef" v-model:filters="filters"/>
+          <MapComponent :data :map-open="mapOpen" v-model:preview-open="previewOpen"
+                      v-model:shop-ref="shopRef" />
         </div>
       </div>
     </div>
