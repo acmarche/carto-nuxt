@@ -6,7 +6,7 @@ defineProps({
   }
 })
 
-const tabOpen = ref(0)
+const tabOpen = ref(-1)
 const menuOpen = defineModel('menuOpen')
 const filters = defineModel('filters')
 
@@ -16,7 +16,7 @@ function manageFilters2(name, value, event) {
 
 function toggleCollapsation(id) {
   if (tabOpen.value === id) {
-    tabOpen.value = 0 //close
+    tabOpen.value = -1 //close
   } else {
     tabOpen.value = id
   }
