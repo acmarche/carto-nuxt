@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "leaflet/dist/leaflet.css";
-import {LIcon, LMap, LMarker, LTileLayer, LTooltip} from "@vue-leaflet/vue-leaflet";
+import {LIcon, LMap, LMarker, LTileLayer, LTooltip} from "@vue-leaflet/vue-leaflet"
 
 const propos = defineProps({
   data: {
@@ -17,12 +17,23 @@ const shopRef = defineModel('shopRef')
 const filters = defineModel('filters')
 const zoom = ref(12);
 const map = ref(null);
-const iconUrl = computed(() => {
-  return `/images/map-pin.svg`;
+const iconUrl2 = computed(() => {
+  return `/images/map-pin.svg`
 })
-const iconSize = computed(() => {
-  return [30, 30];
-})
+let iconSize = [25, 41]
+
+function iconMarker(fiche) {
+  iconSize = [25, 41]
+  if (fiche.classements.length > 0) {
+    const classement = fiche.classements[0]
+    if (classement.icon !== null) {
+      iconSize = [41, 41]
+      return `https://bottin.marche.be/bottin/icons/${classement.icon}`
+    }
+  }
+  return `/images/geolocation/marker-icon.png`
+}
+
 const init = () => {
 
 };
@@ -30,7 +41,7 @@ const init = () => {
 function showPreview(shop) {
   shopRef.value = shop.slugname
   previewOpen.value = true
-  window.scrollTo(0, 0);
+  window.scrollTo(0, 0)
 }
 
 const coordinates = ref([50.217845, 5.331049])
@@ -58,7 +69,7 @@ watch(filters, async (newValue) => {
             name="OpenStreetMap"
         />
         <l-marker :lat-lng="[fiche.latitude,fiche.longitude]" v-for="fiche in data.hits" @click="showPreview(fiche)">
-          <l-icon :icon-url="iconUrl" :icon-size="iconSize" :class-name="`text-red-500`"/>
+          <l-icon :icon-url="iconMarker(fiche)" :icon-size="iconSize" :class-name="`text-red-500`"/>
           <l-tooltip>
             {{ fiche.societe }}
           </l-tooltip>
