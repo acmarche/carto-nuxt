@@ -24,8 +24,7 @@ function imageFiche(fiche) {
 }
 </style>
 <template>
-  <section class="relative h-full overflow-hidden rounded-xl border border-dashed border-gray-400 opacity-100"
-           id="list-result" :data-markers="data.hits">
+  <section class="relative h-full overflow-hidden rounded-xl border border-dashed border-gray-400 opacity-100">
     <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-8 lg:max-w-full lg:px-8">
       <TransitionGroup name="list" tag="ul"
                        class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 sm:gap-x-6 sm:gap-y-4 lg:gap-x-4">
