@@ -3,6 +3,9 @@ export default defineNuxtConfig({
     devtools: {enabled: true},
     debug: false,
     modules: ['@nuxtjs/tailwindcss', '@nuxtjs/google-fonts'],
+    plugins: [
+        {src: '~/plugins/leaflet.ts', mode: 'client'}
+    ],
     app: {
         rootId: 'app',
         head: {
