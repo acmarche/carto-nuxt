@@ -52,7 +52,6 @@ const {
         <div v-show="previewOpen"
              class="relative ml-auto flex h-full w-full max-w-md flex-col overflow-y-auto bg-white shadow-xl">
           <section class="flex flex-col w-full h-full">
-            <widgets-error :error="errorShop.message" v-if="errorShop"/>
             <template v-if="shop">
               <header class="h-28 bg-carto-green text-white flex flex-col w-full p-3">
                 <template class="flex flex-row justify-between ">
@@ -67,12 +66,10 @@ const {
                     </svg>
                   </button>
                 </template>
-                <div v-if="pendingShop">Loading</div>
                 <address class="flex flex-row items-center gap-2">
                   <IconNavigation/>
                   {{ shop.rue }} {{ shop.numero }} <br/> {{ shop.localite }}
                 </address>
-
               </header>
               <div class="flex flex-col flex-auto gap-2 p-3">
                 <h3 class="lg roboto-bold">INFORMATIONS GÉNÉRALES</h3>
