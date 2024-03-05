@@ -54,9 +54,20 @@ onMounted(() => {
     scrollWheelZoom: false
   }).addTo(map)
 
-  markerLayer = $L.layerGroup().addTo(map);
-  addMarkers()
+  addMarkersGrouped()
 })
+
+function addMarkersGrouped() {
+  const markers = $L.markerClusterGroup();
+  data.value.hits.forEach((fiche) => {
+    const point = [fiche.latitude, fiche.longitude]
+    var marker = $L.marker(new $L.LatLng(fiche.latitude, fiche.longitude), {title: fiche.societe});
+    marker.bindPopup(fiche.socite);
+    markers.addLayer(marker);
+  })
+
+  map.addLayer(markers);
+}
 
 function addMarkers(refresh = false) {
   const customIcon = $L.icon({
