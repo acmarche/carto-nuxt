@@ -1,5 +1,6 @@
 <script setup>
 import {IconFilter} from '@tabler/icons-vue'
+const config = useRuntimeConfig()
 
 const filters = defineModel('filters')
 defineProps({
@@ -48,7 +49,7 @@ function isChecked(name, value) {
                 {{ capitalized(facetName) }}
               </legend>
               <div class="space-y-3 pt-6">
-                <div v-for="(nb,name) in item" class="flex items-center" :key="item.name">
+                <div v-for="(nb,name) in item" class="flex flex-row items-center" :key="item.name">
                   <input :id="`filter-${name}`" :name="`${facetName}[]`" :value="name"
                          :checked="isChecked(facetName,name)"
                          @change="manageFilters2(facetName,name,$event)"
@@ -56,10 +57,9 @@ function isChecked(name, value) {
                          class="h-4 w-4 rounded border-carto-gray200 text-carto-pink focus:ring-carto-pink"
                   >
                   <label :for="`filter-${name}`"
-                         class="ml-3 text-sm text-carto-main">
-                    <i :class="data.icons[name]['icon']"
-                       :style="`font-size: 1rem;color:${data.icons[name]['color']}`"></i>
-                    {{ name }} ({{ nb }})
+                         class="ml-3 flex flex-row gap-2 items-center">
+                    <img :src="`${config.public.BOTTIN_URL}/${data.icons[name]['icon']}`" alt="icon" class="w-6 h-6"/>
+                    <span class="text-sm text-carto-main">{{ name }} ({{ nb }})</span>
                   </label>
                 </div>
               </div>
