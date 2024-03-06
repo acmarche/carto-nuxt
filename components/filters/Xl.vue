@@ -28,11 +28,11 @@ function isChecked(name, value) {
 </script>
 <template>
   <aside>
-    <h2 class="sr-only">Filtres</h2>
+    <h2 class="sr-only">Filières et localités</h2>
     <!-- Mobile filter dialog toggle, controls the 'mobileFilterDialogOpen' state. -->
     <button type="button" class="inline-flex items-center px-4 sm:px-0 lg:hidden" @click="menuOpen = true">
       <IconFilter/>
-      <span class="text-sm font-medium text-carto-main">Filtres</span>
+      <span class="text-sm font-medium text-carto-main">Filières et localités</span>
       <svg class="ml-1 h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
            aria-hidden="true">
         <path
@@ -58,7 +58,7 @@ function isChecked(name, value) {
                   >
                   <label :for="`filter-${name}`"
                          class="ml-3 flex flex-row gap-2 items-center">
-                    <img :src="`${config.public.BOTTIN_URL}/${data.icons[name]['icon']}`" alt="icon" class="w-6 h-6"/>
+                    <img :src="`${config.public.BOTTIN_URL}${data.icons[name]['icon']}`" alt="icon" class="w-6 h-6"/>
                     <span class="text-sm text-carto-main">{{ name }} ({{ nb }})</span>
                   </label>
                 </div>

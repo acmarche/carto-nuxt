@@ -1,4 +1,5 @@
 <script setup>
+const config = useRuntimeConfig()
 defineProps({
   data: {
     type: Object,
@@ -117,8 +118,10 @@ function toggleCollapsation(id) {
                                :value="name"
                                type="checkbox"
                                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-                        <label :for="`mobile-${name}`" class="ml-3 text-sm text-gray-500">
-                          {{ name }} ({{ nb }})
+                        <label :for="`mobile-${name}`" class="ml-3 flex flex-row gap-2 items-center">
+                          <img :src="`${config.public.BOTTIN_URL}${data.icons[name]['icon']}`" alt="icon"
+                               class="w-6 h-6"/>
+                          <span class="text-sm text-carto-main">{{ name }} ({{ nb }})</span>
                         </label>
                       </div>
                     </div>
