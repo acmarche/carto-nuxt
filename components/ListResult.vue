@@ -1,4 +1,5 @@
 <script setup>
+const config = useRuntimeConfig()
 defineProps({
   data: {
     type: Object,
@@ -8,7 +9,7 @@ defineProps({
 
 function imageFiche(fiche) {
   if (fiche.image)
-    return `https://bottin.marche.be${fiche.image}`
+    return `${config.public.BOTTIN_URL}/${fiche.image}`
 
   return 'https://picsum.photos/1280'
 }

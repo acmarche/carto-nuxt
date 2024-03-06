@@ -1,7 +1,7 @@
 <script setup>
 import 'leaflet/dist/leaflet.css'
 import {IconMapUp} from "@tabler/icons-vue";
-
+const config = useRuntimeConfig()
 const propos = defineProps({
   data: {
     type: Object,
@@ -49,7 +49,7 @@ function iconMarker(fiche) {
     const classement = fiche.classements[0]
     if (classement.icon !== null) {
       iconSize = [41, 41]
-      return `https://bottin.marche.be/bottin/icons/${classement.icon}`
+      return `${config.public.BOTTIN_URL}/bottin/icons/${classement.icon}`
     }
   }
   return `/images/geolocation/marker-icon.png`
