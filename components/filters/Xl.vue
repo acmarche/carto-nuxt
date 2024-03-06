@@ -19,8 +19,7 @@ function isChecked(name, value) {
     if (filters.value.localite === null) {
       return false
     }
-    const index = filters.value.localite === value
-    return index !== -1
+    return filters.value.localite === value
   }
   const index = filters.value.tags.indexOf(value)
   return index !== -1
