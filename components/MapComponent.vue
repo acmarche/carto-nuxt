@@ -1,5 +1,6 @@
 <script setup>
 import 'leaflet/dist/leaflet.css'
+import {IconMapUp} from "@tabler/icons-vue";
 
 const propos = defineProps({
   data: {
@@ -77,7 +78,7 @@ function addMarkersGrouped() {
     const point = [fiche.latitude, fiche.longitude]
     const marker = $L.marker(new $L.LatLng(fiche.latitude, fiche.longitude), {
       title: fiche.societe,
-      icon: new $Icon({iconUrl: iconMarker(fiche),iconSize: iconSize})
+      icon: new $Icon({iconUrl: iconMarker(fiche), iconSize: iconSize})
     });
     marker.addEventListener('click', () => {
       showPreview(fiche.slugname)
@@ -90,8 +91,11 @@ function addMarkersGrouped() {
 <template>
   <section class="relative overflow-hidden "
            v-show="mapOpen">
-    <div class="mx-auto px-0 py-2 sm:px-4 sm:py-2 w-screen h-dvh" id="openmap">
+    <div class="mx-auto px-0 py-0 sm:px-4 sm:py-2 w-screen h-dvh" id="openmap">
 
     </div>
+    <button type="button" class="absolute bottom-0 right-0 mx-2 mb-6 z-[1000] md:hidden" @click="window.scrollTo(0, 0)" title="Remonter" >
+      <IconMapUp class="w-12 h-12  hover:text-carto-pink"/>
+    </button>
   </section>
 </template>
