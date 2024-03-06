@@ -67,7 +67,7 @@ function toggleCollapsation(id) {
         <div v-show="menuOpen"
              class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl">
           <div class="flex items-center justify-between px-4">
-            <h2 class="text-lg font-medium text-carto-main">Filtres</h2>
+            <h2 class="text-lg font-medium text-carto-main">Filières et localités</h2>
             <button type="button"
                     class="-mr-2 flex h-10 w-10 items-center justify-center p-2 text-carto-gray200 hover:text-carto-gray300"
                     @click="menuOpen = false">
