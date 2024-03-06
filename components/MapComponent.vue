@@ -29,6 +29,7 @@ if (import.meta.env.PROD) {
 }*/
 
 const {$L} = useNuxtApp()
+let markers = null
 
 function showPreview(slugname) {
   shopRef.value = slugname
@@ -39,7 +40,7 @@ function showPreview(slugname) {
 watch(() => propos.data, (newValue, oldValue) => {
   removeAllMarkers()
   data.value = newValue
-  addMarkers(true)
+  addMarkersGrouped()
 })
 
 onMounted(() => {
@@ -54,50 +55,21 @@ onMounted(() => {
     scrollWheelZoom: false
   }).addTo(map)
 
+  markers = $L.markerClusterGroup();
   addMarkersGrouped()
 })
 
 function addMarkersGrouped() {
-  const markers = $L.markerClusterGroup();
+  markers.clearLayers()
   data.value.hits.forEach((fiche) => {
     const point = [fiche.latitude, fiche.longitude]
-    var marker = $L.marker(new $L.LatLng(fiche.latitude, fiche.longitude), {title: fiche.societe});
-    marker.bindPopup(fiche.socite);
+    const marker = $L.marker(new $L.LatLng(fiche.latitude, fiche.longitude), {title: fiche.societe});
+    marker.addEventListener('click', () => {
+      showPreview(fiche.slugname)
+    });
     markers.addLayer(marker);
   })
-
   map.addLayer(markers);
-}
-
-function addMarkers(refresh = false) {
-  const customIcon = $L.icon({
-    iconUrl: '/images/geolocation/marker-icon.png',
-    shadowUrl: '/images/geolocation/marker-shadow.png',
-  });
-
-  data.value.hits.forEach((fiche) => {
-    const point = [fiche.latitude, fiche.longitude]
-    addOneMarker(fiche, point, customIcon)
-  })
-
-  if (refresh) {
-    if (data.value.hits.length > 10) {
-      map.panTo(center)
-    } else if (data.value.hits.length > 0) {
-      map.panTo([data.value.hits[0].latitude, data.value.hits[0].longitude])
-    }
-  }
-}
-
-function addOneMarker(fiche, point, customIcon) {
-  const marker = $L.marker(point, {title: fiche.name, icon: customIcon}).addTo(markerLayer);
-  marker.addEventListener('click', () => {
-    showPreview(fiche.slugname)
-  });
-}
-
-function removeAllMarkers() {
-  markerLayer.clearLayers()
 }
 </script>
 <template>
