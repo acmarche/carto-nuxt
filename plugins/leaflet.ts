@@ -1,4 +1,5 @@
 import L from 'leaflet';
+import {Icon} from 'leaflet';
 import 'leaflet.markercluster'
 
 /**
@@ -9,7 +10,8 @@ import 'leaflet.markercluster'
 export default defineNuxtPlugin(nuxtApp => {
     return {
         provide: {
-            L
+            L,
+            Icon
         }
     }
 })

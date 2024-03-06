@@ -15,7 +15,6 @@ const previewOpen = defineModel('previewOpen')
 const shopRef = defineModel('shopRef')
 const zoom = 14
 let map = null
-let markerLayer = null
 const center = [50.217845, 5.331049]
 const data = ref(propos.data)
 // Fix leaflet not importing marker icons correctly.
@@ -28,7 +27,7 @@ if (import.meta.env.PROD) {
   })
 }*/
 
-const {$L} = useNuxtApp()
+const {$L, $Icon} = useNuxtApp()
 let markers = null
 
 function showPreview(slugname) {
@@ -37,8 +36,21 @@ function showPreview(slugname) {
   window.scrollTo(0, 0);
 }
 
+let iconSize = [25, 41]
+
+function iconMarker(fiche) {
+  iconSize = [25, 41]
+  if (fiche.classements.length > 0) {
+    const classement = fiche.classements[0]
+    if (classement.icon !== null) {
+      iconSize = [41, 41]
+      return `https://bottin.marche.be/bottin/icons/${classement.icon}`
+    }
+  }
+  return `/images/geolocation/marker-icon.png`
+}
+
 watch(() => propos.data, (newValue, oldValue) => {
-  removeAllMarkers()
   data.value = newValue
   addMarkersGrouped()
 })
@@ -63,7 +75,10 @@ function addMarkersGrouped() {
   markers.clearLayers()
   data.value.hits.forEach((fiche) => {
     const point = [fiche.latitude, fiche.longitude]
-    const marker = $L.marker(new $L.LatLng(fiche.latitude, fiche.longitude), {title: fiche.societe});
+    const marker = $L.marker(new $L.LatLng(fiche.latitude, fiche.longitude), {
+      title: fiche.societe,
+      icon: new $Icon({iconUrl: iconMarker(fiche),iconSize: iconSize})
+    });
     marker.addEventListener('click', () => {
       showPreview(fiche.slugname)
     });
