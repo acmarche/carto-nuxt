@@ -34,6 +34,10 @@ let markers = null
 function showPreview(slugname) {
   shopRef.value = slugname
   previewOpen.value = true
+  scrollUp()
+}
+
+function scrollUp() {
   window.scrollTo(0, 0);
 }
 
@@ -94,7 +98,7 @@ function addMarkersGrouped() {
     <div class="mx-auto px-0 py-0 sm:px-4 sm:py-2 w-screen h-dvh" id="openmap">
 
     </div>
-    <button type="button" class="absolute bottom-0 right-0 mx-2 mb-6 z-[1000] md:hidden" @click="window.scrollTo(0, 0)" title="Remonter" >
+    <button type="button" class="absolute bottom-0 right-0 mx-2 mb-6 z-[1000] md:hidden" @click="scrollUp" title="Remonter" >
       <IconMapUp class="w-12 h-12  hover:text-carto-pink"/>
     </button>
   </section>
