@@ -10,8 +10,28 @@ defineProps({
 function imageFiche(fiche) {
   if (fiche.image)
     return `${config.public.BOTTIN_URL}/${fiche.image}`
+  if (fiche.cap) {
+    if (fiche.cap.profileMediaPath) {
+      return `https://cap.marche.be/${fiche.cap.profileMediaPath}`
+    }
+  }
 
   return 'https://picsum.photos/1280'
+}
+
+function urlFiche(fiche) {
+  if (fiche.facebook)
+    return fiche.facebook
+  if (fiche.instagram)
+    return fiche.instagram
+  if (fiche.website)
+    return fiche.website
+  if (fiche.tiktok)
+    return fiche.tiktok
+  if (fiche.twitter)
+    return fiche.twitter
+
+  return fiche.url_cap
 }
 </script>
 <style>
@@ -19,6 +39,7 @@ function imageFiche(fiche) {
 .list-leave-active {
   @apply transition-all duration-700 ease-in-out  transform translate-x-0 opacity-100
 }
+
 .list-enter-from,
 .list-leave-to {
   @apply opacity-0 translate-x-full
@@ -38,17 +59,20 @@ function imageFiche(fiche) {
           </div>
           <div class="flex flex-1 flex-col space-y-2 p-4 h-36">
             <h3 class="text-xl text-carto-gray300 roboto-bold">
-              <a href="#">
+              <a :href="urlFiche(fiche)" target="_blank">
                 <span aria-hidden="true" class="absolute inset-0"></span>
                 {{ fiche.societe }}
               </a>
             </h3>
-            <p class="text-base text-carto-gray200">
-              <span v-for="secteur in fiche.secteurs">{{ secteur }}</span>
+            <p>
+              <span v-for="secteur in fiche.secteurs" class="text-base text-carto-gray200 mr-2">{{ secteur }}</span>
+            </p>
+            <p>
+              <span v-for="tag in fiche.tags" class="text-base text-carto-gray200 mr-2">{{ tag }}</span>
             </p>
             <div class="flex flex-1 flex-col justify-end">
               <p class="text-base font-medium text-gray-900">{{ fiche.localite }}</p>
-              <p class="text-sm italic text-gray-500">{{ fiche.telephone }}</p>
+              <p class="text-sm italic text-gray-500">{{ fiche.telephone }} {{ fiche.mobile }}</p>
             </div>
           </div>
         </li>
