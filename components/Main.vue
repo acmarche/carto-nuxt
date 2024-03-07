@@ -48,9 +48,6 @@ watch(() => propos.coords, (newValue, oldValue) => {
         <p class="mt-4 text-2xl text-carto-main lobster-two-regular-italic">
           Vous trouverez sur cette carte les acteurs et intervenants de différentes filières liées au circuit court dans la commune de Marche-en-Famenne.
         </p>
-        <p class="text-sm text-carto-gray200 m-2">
-          Votre sélection {{ filters }}
-        </p>
         <div v-if="coords.accuracy > 0"
              class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
              role="alert">
