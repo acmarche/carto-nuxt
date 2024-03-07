@@ -14,7 +14,7 @@ const propos = defineProps({
 })
 const previewOpen = defineModel('previewOpen')
 const shopRef = defineModel('shopRef')
-const zoom = 14
+const zoom = 13
 let map = null
 const center = [50.217845, 5.331049]
 const data = ref(propos.data)
