@@ -18,7 +18,7 @@ const listOpen = defineModel('listOpen')
 <template>
   <header class="block z-20 bg-carto-green h-16 w-full">
     <nav class="shadow h-16 text-white flex items-center gap-3 justify-between">
-      <NuxtLink to="/">
+      <NuxtLink to="/" @click="mapOpen=true;listOpen = false">
         <h1 class="ml-3 lobster-two-bold flex flex-col md:flex-row flex-wrap md:flex-nowrap md:gap-3">
           <span class="text-xl md:text-3xl">Circuit court</span>
           <span class="text-base md:text-3xl">Marche-en-Famenne</span>
