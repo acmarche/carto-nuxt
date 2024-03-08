@@ -27,7 +27,7 @@ const menuSelected = defineModel('menuSelected')
         <button class="flex flex-col flex-wrap justify-center items-center hover:text-carto-pink" type="button"
                 title="Carte"
                 @click="menuSelected = 'map'"
-                v-if="menuSelected === 'list'">
+                v-if="menuSelected === 'list'|| menuSelected === 'about'">
           <IconMap/>
           <span class="text-base lg:text-lg">Carte</span>
         </button>
