@@ -13,11 +13,13 @@ const propos = defineProps({
     type: Object,
     required: false
   },
+  menuSelected: {
+    type: String,
+    required: true
+  }
 })
 
 const menuOpen = defineModel('menuOpen')
-const mapOpen = defineModel('mapOpen')
-const listOpen = defineModel('listOpen')
 
 watch(() => propos.coords, (newValue, oldValue) => {
   if (newValue.accuracy > 0) {
@@ -46,7 +48,8 @@ watch(() => propos.coords, (newValue, oldValue) => {
         </h1>
         <h1 class="text-4xl font-bold lobster-two-bold tracking-tight text-carto-pink">Carte dynamique</h1>
         <p class="mt-4 text-2xl text-carto-main lobster-two-regular-italic">
-          Vous trouverez sur cette carte les acteurs et intervenants de différentes filières liées au circuit court dans la commune de Marche-en-Famenne.
+          Vous trouverez sur cette carte les acteurs et intervenants de différentes filières liées au circuit court dans
+          la commune de Marche-en-Famenne.
         </p>
         <div v-if="coords.accuracy > 0"
              class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
@@ -54,18 +57,22 @@ watch(() => propos.coords, (newValue, oldValue) => {
           <span class="font-medium">Votre géolocalisation {{ coords.latitude }},{{ coords.longitude }}. Recherche dans un rayon de 5km</span>
         </div>
       </div>
-      <div class="pt-8 grid grid-cols-1 lg:gap-x-8 lg:grid-cols-[auto_minmax(0,1fr)]" v-if="data">
+      <div class="pt-8 grid grid-cols-1 lg:gap-x-8 lg:grid-cols-[auto_minmax(0,1fr)]"
+           v-if="data && (menuSelected==='map' || menuSelected==='list')">
         <FiltersXl v-model:filters="filters" v-model:menu-open="menuOpen" :data/>
         <div class="mt-6 lg:mt-0">
           <h2 class="text-xl lg:text-3xl text-carto-pink py-3 px-3" id="count-result">
             {{ data.count }} commerces trouvés
           </h2>
-          <div v-show="listOpen">
+          <div v-show="menuSelected === 'list'">
             <ListResult :data/>
           </div>
-          <MapComponent :data :map-open="mapOpen" v-model:preview-open="previewOpen"
-                      v-model:shop-ref="shopRef" />
+          <MapComponent :data v-model:preview-open="previewOpen" :menu-selected="menuSelected"
+                        v-model:shop-ref="shopRef"/>
         </div>
+      </div>
+      <div class="" v-if="menuSelected === 'about'">
+        <About/>
       </div>
     </div>
   </main>

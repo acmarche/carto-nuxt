@@ -12,14 +12,12 @@ defineProps({
   }
 })
 
-const mapOpen = defineModel('mapOpen')
-const listOpen = defineModel('listOpen')
-const aboutOpen = defineModel('aboutOpen')
+const menuSelected = defineModel('menuSelected')
 </script>
 <template>
   <header class="block z-20 bg-carto-green h-16 w-full">
     <nav class="shadow h-16 text-white flex items-center gap-3 justify-between">
-      <NuxtLink to="/" @click="mapOpen=true;listOpen = false;aboutOpen = false;">
+      <NuxtLink to="/" @click="menuSelected='map'">
         <h1 class="ml-3 lobster-two-bold flex flex-col md:flex-row flex-wrap md:flex-nowrap md:gap-3">
           <span class="text-xl md:text-3xl">Circuit court</span>
           <span class="text-base md:text-3xl">Marche-en-Famenne</span>
@@ -28,16 +26,15 @@ const aboutOpen = defineModel('aboutOpen')
       <div class="mx-auto flex flex-row gap-4 roboto-medium">
         <button class="flex flex-col flex-wrap justify-center items-center hover:text-carto-pink" type="button"
                 title="Carte"
-                @click="mapOpen = true; listOpen = false; aboutOpen = false;"
-                v-if="listOpen">
+                @click="menuSelected = 'map'"
+                v-if="menuSelected === 'list'">
           <IconMap/>
           <span class="text-base lg:text-lg">Carte</span>
         </button>
         <button class="flex flex-col flex-wrap justify-center items-center hover:text-carto-pink" type="button"
                 title="Liste"
-                @click="listOpen = true;
-                mapOpen = false; aboutOpen = false;"
-                v-if="mapOpen">
+                @click="menuSelected = 'list'"
+                v-if="menuSelected==='map'">
           <IconList/>
           <span class="text-base lg:text-lg hover:text-carto-main">
                 Liste
@@ -51,8 +48,7 @@ const aboutOpen = defineModel('aboutOpen')
             </span>
         </button>
         <button class="flex flex-col flex-wrap justify-center items-center hover:text-carto-pink" type="button"
-                title="Localisation" @click="listOpen = false;
-                mapOpen = false;aboutOpen=true">
+                title="Localisation" @click="menuSelected = 'about'">
           <IconInfoCircle/>
           <span class=" text-base lg:text-lg hover:text-carto-gray300">
                 A propos de

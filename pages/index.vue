@@ -12,13 +12,10 @@ function refreshGeolLoc() {
   resume()
 }
 
-const menuOpen = ref(false)
-const listOpen = ref(false)
-const mapOpen = ref(true)
+const menuSelected = ref('map')
 </script>
 <template>
-  <AppHeader v-model:menu-open="menuOpen" v-model:list-open="listOpen" v-model:map-open="mapOpen"
-             :refreshGeolLoc="refreshGeolLoc" :errorGeoloc="error"/>
-  <Main v-model:menu-open="menuOpen" v-model:list-open="listOpen" v-model:map-open="mapOpen" :coords="coords"/>
+  <AppHeader :refreshGeolLoc="refreshGeolLoc" :errorGeoloc="error" v-model:menu-selected="menuSelected"/>
+  <Main :coords="coords" v-model:menu-selected="menuSelected"/>
   <AppFooter/>
 </template>

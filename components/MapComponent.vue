@@ -7,8 +7,8 @@ const propos = defineProps({
     type: Object,
     required: true
   },
-  mapOpen: {
-    type: Boolean,
+  menuSelected: {
+    type: String,
     required: true
   }
 })
@@ -94,7 +94,7 @@ function addMarkersGrouped() {
 </script>
 <template>
   <section class="relative overflow-hidden "
-           v-show="mapOpen">
+           v-show="menuSelected === 'map'">
     <div class="mx-auto px-0 py-0 sm:px-4 sm:py-2 w-screen h-dvh" id="openmap">
 
     </div>
