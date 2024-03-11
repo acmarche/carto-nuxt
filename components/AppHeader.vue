@@ -50,7 +50,7 @@ const menuSelected = defineModel('menuSelected')
         <button class="flex flex-col flex-wrap justify-center items-center hover:text-carto-pink" type="button"
                 title="Localisation" @click="menuSelected = 'about'">
           <IconInfoCircle/>
-          <span class=" text-base lg:text-lg hover:text-carto-gray300">
+          <span class="hidden md:inline text-base lg:text-lg hover:text-carto-gray300">
                 A propos de
             </span>
         </button>
