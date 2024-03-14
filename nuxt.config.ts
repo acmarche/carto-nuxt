@@ -32,7 +32,8 @@ export default defineNuxtConfig({
         public: {
             API_URL: process.env.API_URL,
             BOTTIN_URL: process.env.BOTTIN_URL,
-            NUXT_APP_BASE_URL: process.env.NUXT_APP_BASE_URL || '/'
+            NUXT_APP_BASE_URL: process.env.NUXT_APP_BASE_URL || '/',
+            VISIT_URL: process.env.VISIT_URL,
         },
     },
 })
