@@ -14,25 +14,15 @@ const propos = defineProps({
   }
 })
 const previewOpen = defineModel('previewOpen')
-const shopRef = defineModel('shopRef')
+const codeCgt = defineModel('codeCgt')
 const zoom = 13
 let map = null
 const center = [50.217845, 5.331049]
 const data = ref(propos.data)
 const {$L, $Icon} = useNuxtApp()
 let markers = null
-
-function showPreview(slugname) {
-  shopRef.value = slugname
-  previewOpen.value = true
-  scrollUp()
-}
-
-function scrollUp() {
-  window.scrollTo(0, 0);
-}
-
 let iconSize = [25, 41]
+const polyline = ref(null)
 
 function iconMarker(offer) {
   return `/images/geolocation/marker-icon.png`
@@ -43,21 +33,35 @@ watch(() => propos.data, (newValue, oldValue) => {
   addMarkersGrouped()
 })
 
-function drawWalk(offer) {
-  console.log(offer.locations)
+function drawPolyline(offer) {
   if (offer.locations.length > 0) {
     const myStyle = {
       "color": "#487F89FF",
       "weight": 5,
       "opacity": 1
     };
-    $L.polyline(offer.locations, myStyle).addTo(map);
+    polyline.value = $L.polyline(offer.locations, myStyle).addTo(map)
   }
 }
 
-onMounted(() => {
-  const coordinates = ref([50.217845, 5.331049])
+function removePolyline() {
+  if (polyline.value != null) {
+    polyline.value.remove()
+  }
+}
 
+function walkPreview(code) {
+  console.log(code)
+  codeCgt.value = code
+  previewOpen.value = true
+  scrollUp()
+}
+
+function scrollUp() {
+  window.scrollTo(0, 0);
+}
+
+onMounted(() => {
   map = $L.map('openmap').setView(center, zoom)
 
   $L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
@@ -78,8 +82,14 @@ function addMarkersGrouped() {
       title: offer.nom,
       icon: new $Icon({iconUrl: iconMarker(offer), iconSize: iconSize})
     });
+    marker.addEventListener('mouseover', () => {
+      drawPolyline(offer)
+    });
+    marker.addEventListener('mouseout', () => {
+      removePolyline()
+    });
     marker.addEventListener('click', () => {
-      drawWalk(offer)
+      walkPreview(offer.codeCgt)
     });
     markers.addLayer(marker);
   })
