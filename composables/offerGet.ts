@@ -7,7 +7,7 @@ export default (codeCgt: Ref) => {
             errorOffer: null
         }
     }
-    console.log(codeCgt.value)
+    console.log(`${config.public.VISIT_URL}/wp-json/pivot/offer/${codeCgt.value}`)
     const {pending: pendingOffer, data: offer, error: errorOffer} =
         useFetch(
             `${config.public.VISIT_URL}/wp-json/pivot/offer/${codeCgt.value}`, {}
