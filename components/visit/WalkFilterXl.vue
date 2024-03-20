@@ -60,10 +60,10 @@ function isChecked(name, value) {
               </legend>
               <div class="space-y-3 pt-6">
                 <div v-for="(filt) in item" class="flex flex-row items-center" :key="item.name">
-                  <input :id="`filter-${filt.id}`" :name="`${facetName}`" :value="filt.name"
-                         :checked="isChecked(facetName,filt.name)"
-                         @change="manageFilters2(facetName,filt.name,$event)"
-                         type="radio"
+                  <input :id="`filter-${filt.id}`" :name="`${facetName}`" :value="filt.id"
+                         :checked="isChecked(facetName,filt.id)"
+                         @change="manageFilters2(facetName,filt.id,$event)"
+                         type="checkbox"
                          class="h-4 w-4 rounded border-carto-gray200 text-carto-pink focus:ring-carto-pink"
                   >
                   <label :for="`filter-${filt.id}`"

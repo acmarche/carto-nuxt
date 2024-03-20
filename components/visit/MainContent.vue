@@ -1,5 +1,5 @@
 <script setup>
-const filters = ref({localite: null, type: null, coordinates: null})
+const filters = ref({localite: null, type: 11, coordinates: null})
 const walks = ref({types: [], id: null, coordinates: null})
 const codeCgt = ref(null)
 const previewOpen = ref(false)
@@ -40,6 +40,7 @@ watch(() => filters, (newValue, oldValue) => {
 })
 </script>
 <template>
+  {{ error }}
   <WidgetsError :error="error.message" v-if="error"/>
   <main @esca="menuOpen = false" v-if="data">
     <VisitWalkPreview v-model:preview-open="previewOpen" :code-cgt="codeCgt" :key="codeCgt"/>
@@ -59,7 +60,7 @@ watch(() => filters, (newValue, oldValue) => {
         <p class="mt-4 text-2xl text-carto-main lobster-two-regular-italic">
           Vous trouverez sur cette carte les balades à pied, à vélo et pédestres dans la commune de Marche-en-Famenne.
         </p>
-        {{filters}}
+        {{ filters }}
         <div v-if="coords.accuracy > 0"
              class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
              role="alert">

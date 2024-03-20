@@ -6,10 +6,9 @@ export default function manageFilters(filters: Ref, name: String, value: String,
             filters.value.localite = null
         }
         if (name === 'type') {
-            filters.value.type = null
+            filters.value.type = 11
         }
     } else {
-        console.log(name)
         if (name === 'localite') {
             filters.value.localite = value
         }

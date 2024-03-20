@@ -51,23 +51,26 @@ const link = computed(() => {
            :alt="fiche.societe"
            class="h-full w-full object-cover object-center transition-transform duration-500 ease-in-out group-hover:scale-105">
     </div>
-    <div class="flex flex-1 flex-col space-y-2 p-4 h-60">
+    <div class="flex flex-1 flex-col space-y-2 p-4 h-80">
       <h3 class="text-xl text-carto-gray300 roboto-bold">
         <NuxtLink :to="link" target="_blank">
           <span aria-hidden="true" class="absolute inset-0"></span>
           {{ fiche.societe }}
         </NuxtLink>
       </h3>
+      <p class="text-base text-carto-gray200 mr-2">
+        {{ fiche.comment1 }}
+      </p>
+      <div class="flex flex-1 flex-col justify-end">
+        <p class="text-base font-medium text-gray-900">{{ fiche.localite }} <br/>{{ fiche.rue }} {{ fiche.numero }}</p>
+        <p class="text-sm italic text-gray-500">{{ fiche.telephone }} {{ fiche.mobile }}</p>
+      </div>
       <p>
         <span v-for="secteur in fiche.secteurs" class="text-base text-carto-gray200 mr-2">{{ secteur }}</span>
       </p>
       <p>
         <span v-for="tag in fiche.tags" class="text-base text-carto-gray200 mr-2">{{ tag }}</span>
       </p>
-      <div class="flex flex-1 flex-col justify-end">
-        <p class="text-base font-medium text-gray-900">{{ fiche.localite }} <br/>{{ fiche.rue }} {{ fiche.numero }}</p>
-        <p class="text-sm italic text-gray-500">{{ fiche.telephone }} {{ fiche.mobile }}</p>
-      </div>
     </div>
   </article>
 </template>
