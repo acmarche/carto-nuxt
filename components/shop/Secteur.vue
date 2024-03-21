@@ -11,7 +11,7 @@ const {shop} = defineProps<{
   <section class="flex flex-col">
     <ul>
       <li v-for="secteur in shop.classements" class="flex flex-row items-center  gap-2" :key="secteur.id">
-        <img :src="`${config.public.API_URL}/bottin/icons/${secteur.icon}`" v-if="secteur.icon" alt="icon"
+        <img :src="`${config.public.BOTTIN_URL}/bottin/icons/${secteur.icon}`" v-if="secteur.icon" alt="icon"
              class="h-8 w-8"
              aria-hidden="true"/>
         <IconCat class="h-8 w-8" aria-hidden="true" v-else/>
