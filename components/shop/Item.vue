@@ -62,8 +62,9 @@ const link = computed(() => {
         {{ fiche.comment1 }}
       </p>
       <div class="flex flex-1 flex-col justify-end">
-        <p class="text-base font-medium text-gray-900">{{ fiche.localite }} <br/>{{ fiche.rue }} {{ fiche.numero }}</p>
-        <p class="text-sm italic text-gray-500">{{ fiche.telephone }} {{ fiche.mobile }}</p>
+        <span class="text-base font-medium text-gray-900">{{ fiche.localite }} <br/>{{ fiche.rue }} {{ fiche.numero }}</span>
+        <br/>
+        <span class="text-sm italic text-gray-500">{{ fiche.telephone }} {{ fiche.mobile }}</span>
       </div>
       <p>
         <span v-for="secteur in fiche.secteurs" class="text-base text-carto-gray200 mr-2">{{ secteur }}</span>
