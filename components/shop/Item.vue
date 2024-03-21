@@ -50,7 +50,7 @@ const link = computed(() => {
            :alt="fiche.societe"
            class="h-full w-full object-cover object-center transition-transform duration-500 ease-in-out group-hover:scale-105">
     </div>
-    <div class="flex flex-1 flex-col space-y-2 p-2 h-80">
+    <div class="flex flex-1 flex-col space-y-2 p-2 h-72">
       <h3 class="text-xl text-carto-gray300 roboto-bold flex flex-col">
         <NuxtLink :to="link" target="_blank">
           <span aria-hidden="true" class="absolute inset-0"></span>
@@ -62,8 +62,7 @@ const link = computed(() => {
       <p class="text-base text-carto-gray200 mr-2" v-if="fiche.comment1">
         {{ fiche.comment1 }}
       </p>
-      <hr class="divide-amber-600">
-      <p>
+      <p class="block mt-2">
         <span v-for="secteur in fiche.secteurs" class="text-base text-carto-gray200 mr-2">{{ secteur }}</span>
       </p>
     </div>
