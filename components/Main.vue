@@ -1,4 +1,7 @@
 <script setup>
+import {IconDownload} from '@tabler/icons-vue';
+
+const config = useRuntimeConfig()
 const filters = ref({localite: null, tags: [], coordinates: null})
 const shopRef = ref(null)
 const previewOpen = ref(false)
@@ -61,9 +64,16 @@ watch(() => propos.coords, (newValue, oldValue) => {
            v-if="data && (menuSelected==='map' || menuSelected==='list')">
         <FiltersXl v-model:filters="filters" v-model:menu-open="menuOpen" :data/>
         <div class="mt-6 lg:mt-0">
-          <h2 class="text-xl lg:text-3xl text-carto-pink py-3 px-3" id="count-result">
-            {{ data.count }} commerces trouvés
-          </h2>
+          <div class="flex flex-row items-center justify-between">
+            <h2 class="text-xl lg:text-3xl text-carto-pink py-3 px-3"
+                id="count-result">
+              {{ data.count }} commerces trouvés
+            </h2>
+            <NuxtLink :to="`${config.public.BOTTIN_URL}/export/circuit-court`" class="flex flex-row gap-2 mr-3">
+              <IconDownload class="h-6 w-6"/>
+              <span class="text-sm">Exporter la liste</span>
+            </NuxtLink>
+          </div>
           <div v-show="menuSelected === 'list'">
             <ListResult :data/>
           </div>
