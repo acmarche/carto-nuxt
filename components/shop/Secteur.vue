@@ -19,9 +19,10 @@ const {shop} = defineProps<{
       </li>
     </ul>
     <ul class="mt-2">
-      <li v-for="(tag,key,index) in shop.tags" class="flex flex-row items-center gap-2" :key="index">
-        <IconCat class="h-8 w-8" aria-hidden="true"/>
-        <span>{{ tag }}</span>
+      <li v-for="tag in shop.tagsObject" class="flex flex-row items-center gap-2" :key="tag.id">
+        <img :src="`${config.public.BOTTIN_URL}/${tag.icon}`" alt="icon" class="w-8 h-8" v-if="tag.icon"/>
+        <IconCat class="h-8 w-8" aria-hidden="true" v-else/>
+        <span>{{ tag.name }}</span>
       </li>
     </ul>
   </section>
