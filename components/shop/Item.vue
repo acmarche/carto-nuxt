@@ -57,7 +57,7 @@ const link = computed(() => {
           {{ fiche.societe }}
         </NuxtLink>
         <span class="text-base text-gray-600">{{ fiche.localite }} - {{ fiche.rue }} {{ fiche.numero }}</span>
-        <span class="text-sm italic text-gray-500">{{ fiche.telephone }} {{ fiche.mobile }}</span>
+        <span class="text-sm italic text-gray-500">{{ fiche.telephone }} {{ fiche.gsm }}</span>
       </h3>
       <p class="text-base text-carto-gray200 mr-2" v-if="fiche.comment1">
         {{ fiche.comment1 }}
