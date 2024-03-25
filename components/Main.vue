@@ -69,7 +69,7 @@ watch(() => propos.coords, (newValue, oldValue) => {
                 id="count-result">
               {{ data.count }} commerces trouvés
             </h2>
-            <NuxtLink :to="`${config.public.BOTTIN_URL}/export/circuit-court`" class="flex flex-row gap-2 mr-3">
+            <NuxtLink :to="`${config.public.BOTTIN_URL}/circuit-court.pdf`" class="flex flex-row gap-2 mr-3" target="_blank" download>
               <IconDownload class="h-6 w-6"/>
               <span class="text-sm">Exporter la liste</span>
             </NuxtLink>
