@@ -70,6 +70,7 @@ watch(() => codeCgt, (newValue, oldValue) => {
                 <address class="flex flex-row items-center gap-2" v-if="offer">
                   <IconNavigation/>
                   {{ offer.adresse1.rue }} {{ offer.adresse1.localite.value }}
+                  {{ offer.adresse1.lieuPrecis }}
                 </address>
                 <div v-if="offer.webs.length > 0 ">
                   <p class="">Site web</p>

@@ -1,20 +1,21 @@
-export default (args: Ref) => {
+export default () => {
     const config = useRuntimeConfig()
-    const url = `${config.public.VISIT_URL}/wp-json/pivot/walks_list/${args.value.type}`
+    const url = `${config.public.VISIT_URL}/wp-json/pivot/walks_list/11`
     console.log(url)
     const {
         pending,
         data,
+        refresh,
         error
     } = useFetch(
         url, {
-            method: 'post',
-            body: {args},
+            method: 'get',
         }
     );
     return {
         pending,
         data,
+        refresh,
         error
     };
 }

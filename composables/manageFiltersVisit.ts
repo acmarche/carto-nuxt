@@ -1,5 +1,4 @@
 export default function manageFilters(filters: Ref, name: String, value: String, event: Event): Ref {
-    console.log("search", value, name)
     // @ts-ignore
     if (!event.target.checked) {
         if (name === 'localite') {

@@ -1,13 +1,13 @@
 <script setup>
 const filters = ref({localite: null, type: 11, coordinates: null})
-const walks = ref({types: [], id: null, coordinates: null})
 const codeCgt = ref(null)
 const previewOpen = ref(false)
 const {
   pending,
+  refresh,
   data,
   error
-} = walksGet(filters)
+} = walksGet()
 
 const {
   pending: pendingFilters,
@@ -35,8 +35,22 @@ watch(() => propos.coords, (newValue, oldValue) => {
     walks.value = walksSave
   }
 })
-watch(() => filters, (newValue, oldValue) => {
-  console.log(newValue)
+watch(filters.value, (newValue) => {
+  const type = newValue.type
+  const locality = newValue.localite
+  if (type !== 11) {
+    data.value = data.value.filter((item) => {
+      return type === item.type;
+    })
+  }
+  if (locality) {
+    data.value = data.value.filter((item) => {
+      return locality === item.localite;
+    })
+  }
+  if (!locality && type === 11) {
+    refresh()
+  }
 })
 </script>
 <template>
@@ -69,7 +83,7 @@ watch(() => filters, (newValue, oldValue) => {
       </div>
       <div class="pt-8 grid grid-cols-1 lg:gap-x-8 lg:grid-cols-[auto_minmax(0,1fr)]"
            v-if="data && (menuSelected==='map' || menuSelected==='list')">
-        <VisitWalkFilterXl :filters="filters" :dataFilters v-model:menu-open="menuOpen" :data/>
+        <VisitWalkFilterXl v-model:filters="filters" :data-filters="dataFilters" v-model:menu-open="menuOpen" :data/>
         <div class="mt-6 lg:mt-0">
           <h2 class="text-xl lg:text-3xl text-carto-pink py-3 px-3" id="count-result">
             {{ data.length }} balades trouvées

@@ -4,6 +4,7 @@ import {IconFilter, IconBuildingChurch, IconWalk, IconBike, IconHorse} from '@ta
 const config = useRuntimeConfig()
 
 const filters = defineModel('filters')
+
 defineProps({
   data: {
     type: Object,
