@@ -82,10 +82,11 @@ const previewOpen = defineModel('previewOpen')
                   <IconWalk class="w-6 h-6"/>
                   {{ offerSelected.gpx_distance }} km
                 </p>
-                <NuxtLink :to="offer.url"
+                <NuxtLink :to="offerSelected.url"
+                          target="_blank"
                           class="flex flex-row">
                   <IconLink class="w-6 h-6"/>
-                  Voir sur le site {{ config.public.VISIT_URL }}
+                  Détails sur {{ config.public.VISIT_URL }}
                 </NuxtLink>
               </template>
             </div>
