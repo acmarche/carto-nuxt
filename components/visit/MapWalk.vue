@@ -50,9 +50,8 @@ function removePolyline() {
   }
 }
 
-function walkPreview(code) {
-  console.log(code)
-  codeCgt.value = code
+function walkPreview(codeCgtSelected) {
+  codeCgt.value = codeCgtSelected
   previewOpen.value = true
   scrollUp()
 }

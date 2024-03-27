@@ -1,5 +1,6 @@
 <script setup>
 const filters = ref({localite: null, type: 11, coordinates: null})
+const offerSelected = ref(null)
 const codeCgt = ref(null)
 const previewOpen = ref(false)
 const {
@@ -28,6 +29,20 @@ const propos = defineProps({
 
 const menuOpen = defineModel('menuOpen')
 
+watch(codeCgt, (codeCgtValue) => {
+  console.log(codeCgtValue)
+  if (codeCgtValue) {
+    const t = data.value.filter((item) => {
+      return codeCgtValue === item.codeCgt;
+    })
+    if (t.length > 0) {
+      offerSelected.value = t[0]
+    }
+  }
+})
+watch(offerSelected, (newVale) => {
+  console.log(newVale)
+})
 watch(() => propos.coords, (newValue, oldValue) => {
   if (newValue.accuracy > 0) {
     const walksSave = {localite: walks.value.localite, tags: walks.value.tags}
@@ -54,10 +69,12 @@ watch(filters.value, (newValue) => {
 })
 </script>
 <template>
-  {{ error }}
   <WidgetsError :error="error.message" v-if="error"/>
   <main @esca="menuOpen = false" v-if="data">
-    <VisitWalkPreview v-model:preview-open="previewOpen" :code-cgt="codeCgt" :key="codeCgt"/>
+    <VisitWalkFilterMobile v-model:filters="filters" :data-filters="dataFilters" v-model:menu-open="menuOpen"
+                           :data="data"/>
+    <VisitWalkPreview v-model:preview-open="previewOpen" :offer-selected="offerSelected"
+                      :key="codeCgt"/>
     <div class="mx-auto max-w-full px-0 py-8 sm:px-6 sm:py-12 lg:px-8">
       <div class="border-b border-gray-200 pb-6 px-4 sm:px-0">
         <h1 class="lobster-two-bold

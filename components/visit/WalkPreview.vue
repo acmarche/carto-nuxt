@@ -1,18 +1,14 @@
 <script setup>
-import {IconNavigation} from "@tabler/icons-vue";
+import {IconNavigation, IconWalk, IconLink,IconGraph, IconClock} from "@tabler/icons-vue";
 
-const previewOpen = defineModel('previewOpen')
-const codeCgt = defineModel('codeCgt')
-const {
-  pendingOffer,
-  offer,
-  errorOffer
-} = offerGet(codeCgt)
-
-watch(() => codeCgt, (newValue, oldValue) => {
-  console.log(newValue)
+const config = useRuntimeConfig()
+defineProps({
+  offerSelected: {
+    type: Object,
+    required: false
+  }
 })
-
+const previewOpen = defineModel('previewOpen')
 </script>
 <template>
   <!--
@@ -58,30 +54,42 @@ watch(() => codeCgt, (newValue, oldValue) => {
         <div v-show="previewOpen"
              class="relative ml-auto flex h-full w-full max-w-md flex-col overflow-y-auto bg-white shadow-xl">
           <section class="flex flex-col w-full h-full">
-            <VisitHeaderPreview v-model:preview-open="previewOpen" :name="offer?.nom ?? 'Loading...'">
+            <VisitHeaderPreview v-model:preview-open="previewOpen" :name="offerSelected?.nom ?? 'Chargement'">
 
             </VisitHeaderPreview>
             <div class="flex flex-col flex-auto gap-2 p-3">
-              <div v-if="errorOffer">
-                {{ errorOffer }}
-              </div>
-              <template v-if="offer">
+              <template v-if="offerSelected">
                 <h3 class="lg roboto-bold">DETAILS DU PARCOURT</h3>
-                <address class="flex flex-row items-center gap-2" v-if="offer">
+                <address class="flex flex-row items-center gap-2" v-if="offerSelected">
                   <IconNavigation/>
-                  {{ offer.adresse1.rue }} {{ offer.adresse1.localite.value }}
-                  {{ offer.adresse1.lieuPrecis }}
+                  {{ offerSelected.address.rue }} {{ offerSelected.localite }}
+                  {{ offerSelected.address.lieuPrecis }}
                 </address>
-                <div v-if="offer.webs.length > 0 ">
+                <div v-if="offerSelected.webs?.length > 0 ">
                   <p class="">Site web</p>
-                  <a v-for="web in offer.webs" :href="web.value" target="_blank"
-                     class="">{{ web.value }}
-                  </a>
+                  <NuxtLink v-for="web in offerSelected.webs" :to="web.value" target="_blank"
+                            class="">{{ web.value }}
+                  </NuxtLink>
                 </div>
+                <p class="flex flex-row" v-if="offerSelected.gpx_duree">
+                  <IconClock class="w-6 h-6"/>
+                  {{ offerSelected.gpx_duree }}</p>
+                <p class="flex flex-row" v-if="offerSelected.gpx_difficulte">
+                  <IconGraph class="w-6 h-6"/>
+                  {{ offerSelected.gpx_difficulte }}
+                </p>
+                <p class="flex flex-row" v-if="offerSelected.gpx_distance">
+                  <IconWalk class="w-6 h-6"/>
+                  {{ offerSelected.gpx_distance }} km
+                </p>
+                <NuxtLink :to="`${config.public.VISIT_URL}/fr/categorie/balades/offre/${offerSelected.codeCgt}`"
+                          class="flex flex-row">
+                  <IconLink class="w-6 h-6"/>
+                  Voir sur le site {{ config.public.VISIT_URL }}
+                </NuxtLink>
               </template>
             </div>
             <footer class="h-12 bg-carto-green text-white flex flex-col w-full p-3">
-
             </footer>
           </section>
         </div>
