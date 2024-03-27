@@ -82,7 +82,7 @@ const previewOpen = defineModel('previewOpen')
                   <IconWalk class="w-6 h-6"/>
                   {{ offerSelected.gpx_distance }} km
                 </p>
-                <NuxtLink :to="`${config.public.VISIT_URL}/fr/categorie/balades/offre/${offerSelected.codeCgt}`"
+                <NuxtLink :to="offer.url"
                           class="flex flex-row">
                   <IconLink class="w-6 h-6"/>
                   Voir sur le site {{ config.public.VISIT_URL }}

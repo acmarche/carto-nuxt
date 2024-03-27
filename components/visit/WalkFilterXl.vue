@@ -2,37 +2,36 @@
 import {IconFilter, IconBuildingChurch, IconWalk, IconBike, IconHorse} from '@tabler/icons-vue'
 
 const config = useRuntimeConfig()
-
-const filters = defineModel('filters')
+const filtersSelected = defineModel('filtersSelected')
+const menuOpen = defineModel('menuOpen')
 
 defineProps({
   data: {
     type: Object,
     required: true
   },
-  dataFilters: {
+  filters: {
     type: Object,
     required: true
   }
 })
-const menuOpen = defineModel('menuOpen')
 
 function manageFilters2(name, value, event) {
-  manageFiltersVisit(filters, name, value, event)
+  manageFiltersVisit(filtersSelected, name, value, event)
 }
 
 function isChecked(name, value) {
   if (name === 'localite') {
-    if (filters.value.localite === null) {
+    if (filtersSelected.value.localite === null) {
       return false
     }
-    return filters.value.localite === value
+    return filtersSelected.value.localite === value
   }
   if (name === 'type') {
-    if (filters.value.type === null) {
+    if (filtersSelected.value.type === null) {
       return false
     }
-    return filters.value.type === value
+    return filtersSelected.value.type === value
   }
   return false
 }
@@ -53,27 +52,27 @@ function isChecked(name, value) {
 
     <div class="hidden lg:block lg:min-w-36">
       <form class="space-y-10 divide-y divide-gray-200">
-        <template v-for="(item,facetName,index) in dataFilters" :key="index">
+        <template v-for="(item,facetName,index) in filters" :key="index">
           <div class="[&:not(:first-child)]:pt-10">
             <fieldset>
               <legend class="block text-sm font-medium text-gray-900">
                 {{ capitalized(facetName) }}
               </legend>
               <div class="space-y-3 pt-6">
-                <div v-for="(filt) in item" class="flex flex-row items-center" :key="item.name">
-                  <input :id="`filter-${filt.id}`" :name="`${facetName}`" :value="filt.id"
-                         :checked="isChecked(facetName,filt.id)"
-                         @change="manageFilters2(facetName,filt.id,$event)"
+                <div v-for="(filter) in item" class="flex flex-row items-center" :key="item.name">
+                  <input :id="`filter-${filter.id}`" :name="`${facetName}`" :value="filter.id"
+                         :checked="isChecked(facetName,filter.id)"
+                         @change="manageFilters2(facetName,filter.id,$event)"
                          type="checkbox"
                          class="h-4 w-4 rounded border-carto-gray200 text-carto-pink focus:ring-carto-pink"
                   >
-                  <label :for="`filter-${filt.id}`"
+                  <label :for="`filter-${filter.id}`"
                          class="ml-3 flex flex-row gap-2 items-center">
                     <IconBuildingChurch v-if="facetName=== 'localite'"/>
-                    <IconWalk v-if="filt.name==='A pied'"/>
-                    <IconBike v-if="filt.name==='A Vélo'"/>
-                    <IconHorse v-if="filt.name==='Grandes Randonnées Pédestres'"/>
-                    <span class="text-sm text-carto-main">{{ filt.name }}</span>
+                    <IconWalk v-if="filter.name==='A pied'"/>
+                    <IconBike v-if="filter.name==='A Vélo'"/>
+                    <IconHorse v-if="filter.name==='Grandes Randonnées Pédestres'"/>
+                    <span class="text-sm text-carto-main">{{ filter.name }}</span>
                   </label>
                 </div>
               </div>

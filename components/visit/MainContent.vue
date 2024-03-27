@@ -1,5 +1,5 @@
 <script setup>
-const filters = ref({localite: null, type: 11, coordinates: null})
+const filtersSelected = ref({localite: null, type: 11})
 const offerSelected = ref(null)
 const codeCgt = ref(null)
 const previewOpen = ref(false)
@@ -12,7 +12,7 @@ const {
 
 const {
   pending: pendingFilters,
-  data: dataFilters,
+  data: filters,
   error: errorFilters
 } = walkFiltersGet()
 
@@ -50,7 +50,7 @@ watch(() => propos.coords, (newValue, oldValue) => {
     walks.value = walksSave
   }
 })
-watch(filters.value, (newValue) => {
+watch(filtersSelected.value, (newValue) => {
   const type = newValue.type
   const locality = newValue.localite
   if (type !== 11) {
@@ -71,7 +71,7 @@ watch(filters.value, (newValue) => {
 <template>
   <WidgetsError :error="error.message" v-if="error"/>
   <main @esca="menuOpen = false" v-if="data">
-    <VisitWalkFilterMobile v-model:filters="filters" :data-filters="dataFilters" v-model:menu-open="menuOpen"
+    <VisitWalkFilterMobile v-model:filters-selected="filtersSelected" :filters="filters" v-model:menu-open="menuOpen"
                            :data="data"/>
     <VisitWalkPreview v-model:preview-open="previewOpen" :offer-selected="offerSelected"
                       :key="codeCgt"/>
@@ -91,16 +91,10 @@ watch(filters.value, (newValue) => {
         <p class="mt-4 text-2xl text-carto-main lobster-two-regular-italic">
           Vous trouverez sur cette carte les balades à pied, à vélo et pédestres dans la commune de Marche-en-Famenne.
         </p>
-        {{ filters }}
-        <div v-if="coords.accuracy > 0"
-             class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
-             role="alert">
-          <span class="font-medium">Votre géolocalisation {{ coords.latitude }},{{ coords.longitude }}. Recherche dans un rayon de 5km</span>
-        </div>
       </div>
       <div class="pt-8 grid grid-cols-1 lg:gap-x-8 lg:grid-cols-[auto_minmax(0,1fr)]"
            v-if="data && (menuSelected==='map' || menuSelected==='list')">
-        <VisitWalkFilterXl v-model:filters="filters" :data-filters="dataFilters" v-model:menu-open="menuOpen" :data/>
+        <VisitWalkFilterXl v-model:filters-selected="filtersSelected" :filters="filters" v-model:menu-open="menuOpen" :data/>
         <div class="mt-6 lg:mt-0">
           <h2 class="text-xl lg:text-3xl text-carto-pink py-3 px-3" id="count-result">
             {{ data.length }} balades trouvées

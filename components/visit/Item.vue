@@ -1,4 +1,6 @@
 <script setup>
+import {IconNavigation, IconWalk, IconLink, IconGraph, IconClock} from "@tabler/icons-vue";
+
 const config = useRuntimeConfig()
 const {offer} = defineProps({
   offer: {
@@ -8,7 +10,7 @@ const {offer} = defineProps({
 })
 
 const image = computed(() => {
-  if (offer.images.length > 0){
+  if (offer.images.length > 0) {
     return offer.images[0]
   }
 
@@ -30,12 +32,24 @@ const image = computed(() => {
           {{ offer.nom }}
         </NuxtLink>
       </h3>
-      <p>
-
+      <p class="flex flex-row" v-if="offer.gpx_duree">
+        <IconClock class="w-6 h-6"/>
+        {{ offer.gpx_duree }}
+      </p>
+      <p class="flex flex-row" v-if="offer.gpx_difficulte">
+        <IconGraph class="w-6 h-6"/>
+        {{ offer.gpx_difficulte }}
+      </p>
+      <p class="flex flex-row" v-if="offer.gpx_distance">
+        <IconWalk class="w-6 h-6"/>
+        {{ offer.gpx_distance }} km
       </p>
       <div class="flex flex-1 flex-col justify-end">
-        <p class="text-base font-medium text-gray-900">{{ offer.address.localite.value }} <br/>{{ offer.address.rue.value }}</p>
-        <p class="text-sm italic text-gray-500">45</p>
+        <p class="text-base font-medium text-gray-900">
+           {{ offer.address.rue }}
+          {{ offer.address.lieuPrecis }}
+        </p>
+        <p class="text-sm italic text-gray-500">{{ offer.localite }}</p>
       </div>
     </div>
   </article>
