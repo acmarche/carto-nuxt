@@ -1,0 +1,31 @@
+/* SDA Demo */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        scale: 0.8;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    img {
+        animation: appear linear;
+        animation-timeline: view();
+        animation-range: entry 25% cover 50%;
+    }
+}
+
+@keyframes scale-up {
+  from {
+    background-color: red;
+    transform: scaleX(0);
+  }
+  to {
+    background-color: darkred;
+    transform: scaleX(1);
+  }
+}
