@@ -43,7 +43,7 @@ function isChecked(name, value) {
     <div class="hidden lg:block lg:min-w-36">
       <form class="space-y-10 divide-y divide-gray-200">
         <template v-for="(items,groupName,index) in data.filters" :key="index">
-          <div class="[&:not(:first-child)]:pt-10">
+          <div class="[&:not(:first-child)]:pt-5">
             <fieldset>
               <legend class="block text-sm font-medium text-gray-900">
                 {{ capitalized(groupName) }}
