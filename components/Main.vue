@@ -33,6 +33,7 @@ watch(() => propos.coords, (newValue, oldValue) => {
 })
 </script>
 <template>
+  {{error}}
   <WidgetsError :error="error.message" v-if="error"/>
   <main @esca="menuOpen = false" v-if="data">
     <FiltersMobile v-model:filters="filters" v-model:menu-open="menuOpen" :data="data"/>
