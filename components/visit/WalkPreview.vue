@@ -59,7 +59,7 @@ const previewOpen = defineModel('previewOpen')
             </VisitHeaderPreview>
             <div class="flex flex-col flex-auto gap-2 p-3">
               <template v-if="offerSelected">
-                <h3 class="lg roboto-bold">DETAILS DU PARCOURT</h3>
+                <h3 class="lg roboto-bold">DETAILS DU PARCOURS</h3>
                 <address class="flex flex-row items-center gap-2" v-if="offerSelected">
                   <IconNavigation/>
                   {{ offerSelected.address.rue }} {{ offerSelected.localite }}
