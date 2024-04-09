@@ -28,11 +28,11 @@ function isChecked(name, value) {
 </script>
 <template>
   <aside>
-    <h2 class="sr-only">Filières et localités</h2>
+    <h2 class="sr-only">Filtres</h2>
     <!-- Mobile filter dialog toggle, controls the 'mobileFilterDialogOpen' state. -->
     <button type="button" class="inline-flex items-center px-4 sm:px-0 lg:hidden" @click="menuOpen = true">
       <IconFilter/>
-      <span class="text-sm font-medium text-carto-main">Filières et localités</span>
+      <span class="text-sm font-medium text-carto-main">Filtres</span>
       <svg class="ml-1 h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
            aria-hidden="true">
         <path
