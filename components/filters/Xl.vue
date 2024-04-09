@@ -50,7 +50,7 @@ function isChecked(name, value) {
               </legend>
               <div class="space-y-3 pt-6">
                 <div v-for="item in items" class="flex flex-row items-center" :key="item.name">
-                  <input :id="`filter-${name}`" :name="`${groupName}[]`" :value="item.name"
+                  <input :id="`filter-${item.name}`" :name="`${groupName}[]`" :value="item.name"
                          :checked="isChecked(groupName,item.name)"
                          @change="manageFilters2(groupName,item.name,$event)"
                          type="checkbox"
