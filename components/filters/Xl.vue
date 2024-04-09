@@ -42,24 +42,24 @@ function isChecked(name, value) {
 
     <div class="hidden lg:block lg:min-w-36">
       <form class="space-y-10 divide-y divide-gray-200">
-        <template v-for="(item,facetName,index) in data.facetDistribution" :key="index">
-          <div class="[&:not(:first-child)]:pt-10" v-if="nameStartsWithUnderscore(facetName)">
+        <template v-for="(items,groupName,index) in data.filters" :key="index">
+          <div class="[&:not(:first-child)]:pt-10">
             <fieldset>
               <legend class="block text-sm font-medium text-gray-900">
-                {{ capitalized(facetName) }}
+                {{ capitalized(groupName) }}
               </legend>
               <div class="space-y-3 pt-6">
-                <div v-for="(nb,name) in item" class="flex flex-row items-center" :key="item.name">
-                  <input :id="`filter-${name}`" :name="`${facetName}[]`" :value="name"
-                         :checked="isChecked(facetName,name)"
-                         @change="manageFilters2(facetName,name,$event)"
+                <div v-for="item in items" class="flex flex-row items-center" :key="item.name">
+                  <input :id="`filter-${name}`" :name="`${groupName}[]`" :value="item.name"
+                         :checked="isChecked(groupName,item.name)"
+                         @change="manageFilters2(groupName,item.name,$event)"
                          type="checkbox"
                          class="h-4 w-4 rounded border-carto-gray200 text-carto-pink focus:ring-carto-pink"
                   >
-                  <label :for="`filter-${name}`"
+                  <label :for="`filter-${item.name}`"
                          class="ml-3 flex flex-row gap-2 items-center">
-                    <img :src="`${config.public.BOTTIN_URL}${data.icons[name]['icon']}`" alt="icon" class="w-6 h-6"/>
-                    <span class="text-sm text-carto-main">{{ name }} ({{ nb }})</span>
+                    <img :src="`${config.public.BOTTIN_URL}${data.icons[item.name]['icon']}`" alt="icon" class="w-6 h-6"/>
+                    <span class="text-sm text-carto-main">{{ item.name }} ({{ item.count }})</span>
                   </label>
                 </div>
               </div>

@@ -82,8 +82,8 @@ function toggleCollapsation(id) {
 
           <!-- Filters -->
           <form class="mt-4">
-            <template v-for="(item,facetName, index) in data.facetDistribution" :key="index">
-              <div class="border-t border-gray-200 pb-4 pt-4" v-if="nameStartsWithUnderscore(facetName)">
+            <template v-for="(items,groupName, index) in data.filters" :key="index">
+              <div class="border-t border-gray-200 pb-4 pt-4" v-if="nameStartsWithUnderscore(groupName)">
                 <fieldset>
                   <legend class="w-full px-2">
                     <!-- Expand/collapse section button -->
@@ -91,7 +91,7 @@ function toggleCollapsation(id) {
                             class="flex w-full items-center justify-between p-2 text-gray-400 hover:text-gray-500"
                             aria-controls="filter-section-0" aria-expanded="false"
                             @click="toggleCollapsation(index)">
-                      <span class="text-sm font-medium text-gray-900">{{ capitalized(facetName) }}</span>
+                      <span class="text-sm font-medium text-gray-900">{{ capitalized(groupName) }}</span>
                       <span class="ml-6 flex h-7 items-center">
                                               <!--
                                                 Expand/collapse icon, toggle classes based on section open state.
@@ -112,16 +112,16 @@ function toggleCollapsation(id) {
                   </legend>
                   <div class="px-4 pb-2 pt-4" id="filter-section-0" v-show="tabOpen === index">
                     <div class="space-y-6">
-                      <div class="flex items-center" v-for="(nb,name) in item" :key="item.name">
-                        <input :id="`mobile-${name}`" :name="`${facetName}[]`"
-                               @change="manageFilters2(facetName,name,$event)"
-                               :value="name"
+                      <div class="flex items-center" v-for="(item) in items" :key="item.name">
+                        <input :id="`mobile-${item.name}`" :name="`${groupName}[]`"
+                               @change="manageFilters2(groupName,item.name,$event)"
+                               :value="item.name"
                                type="checkbox"
                                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-                        <label :for="`mobile-${name}`" class="ml-3 flex flex-row gap-2 items-center">
-                          <img :src="`${config.public.BOTTIN_URL}${data.icons[name]['icon']}`" alt="icon"
+                        <label :for="`mobile-${item.name}`" class="ml-3 flex flex-row gap-2 items-center">
+                          <img :src="`${config.public.BOTTIN_URL}${data.icons[item.name]['icon']}`" alt="icon"
                                class="w-6 h-6"/>
-                          <span class="text-sm text-carto-main">{{ name }} ({{ nb }})</span>
+                          <span class="text-sm text-carto-main">{{ item.name }} ({{ item.count }})</span>
                         </label>
                       </div>
                     </div>
