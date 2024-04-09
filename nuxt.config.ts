@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: {enabled: true},
-    debug: true,
+    debug: false,
     modules: ['@nuxtjs/tailwindcss', '@nuxtjs/google-fonts'],
     plugins: [
         {src: '~/plugins/leaflet.ts', mode: 'client'}
