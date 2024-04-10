@@ -20,6 +20,11 @@
         <br/><br/>
 
         N’hésitez pas à aller à leur rencontre et à consommer leurs produits!
+        <br/><br/>
+        Ce n’est pas tout ! Le circuit court concerne la seconde main, l’upcycling et d’autres initiatives encore.<br/>
+        Vous les retrouverez également sur notre carte dynamique.
+        <br/><br/>
+        <strong>Pour tout contact :</strong> <a href="https://adl.marche.be/" target="_blank">Agence de Développement Local</a>
       </article>
     </div>
   </section>
