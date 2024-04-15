@@ -85,16 +85,18 @@ watch(filtersSelected.value, (newValue) => {
         bg-[length:250px_100%] bg-no-repeat
         px-10 py-1 text-center text-4xl font-bold
         animate-shimmer">
-          Des balades en Famenne...
+          Réseau balades Marche-en-Famenne
         </h1>
         <h1 class="text-4xl font-bold lobster-two-bold tracking-tight text-carto-pink">Carte dynamique</h1>
         <p class="mt-4 text-2xl text-carto-main lobster-two-regular-italic">
-          Vous trouverez sur cette carte les balades à pied, à vélo et pédestres dans la commune de Marche-en-Famenne.
+          Vous trouverez sur cette carte les balades à pied, à vélo au sein de la commune de Marche-en-Famenne + mettre
+          Réseau balades Marche-en-Famenne.
         </p>
       </div>
       <div class="pt-8 grid grid-cols-1 lg:gap-x-8 lg:grid-cols-[auto_minmax(0,1fr)]"
            v-if="data && (menuSelected==='map' || menuSelected==='list')">
-        <VisitWalkFilterXl v-model:filters-selected="filtersSelected" :filters="filters" v-model:menu-open="menuOpen" :data/>
+        <VisitWalkFilterXl v-model:filters-selected="filtersSelected" :filters="filters" v-model:menu-open="menuOpen"
+                           :data/>
         <div class="mt-6 lg:mt-0">
           <h2 class="text-xl lg:text-3xl text-carto-pink py-3 px-3" id="count-result">
             {{ data.length }} balades trouvées
