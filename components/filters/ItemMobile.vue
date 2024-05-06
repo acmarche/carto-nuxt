@@ -2,7 +2,7 @@
 import {IconInfoCircle} from '@tabler/icons-vue'
 
 const config = useRuntimeConfig()
-const filters = defineModel('filters')
+const openInfo = ref(false)
 
 defineProps({
   item: {
@@ -22,18 +22,6 @@ defineProps({
     required: true
   }
 })
-const openInfo = ref(false)
-
-function isChecked(name, value) {
-  if (name === 'localite') {
-    if (filters.value.localite === null) {
-      return false
-    }
-    return filters.value.localite === value
-  }
-  const index = filters.value.tags.indexOf(value)
-  return index !== -1
-}
 </script>
 <template>
   <div v-show="openInfo" class="absolute w-56 mt-4" style="z-index: 1000;">
@@ -52,15 +40,12 @@ function isChecked(name, value) {
       </div>
     </Transition>
   </div>
-  <input :id="`filter-${item.name}`" :name="`${groupName}[]`" :value="item.name"
-         :checked="isChecked(groupName,item.name)"
+  <input :id="`mobile-${item.name}`" :name="`${groupName}[]`"
          @change="manageFilters2(groupName,item.name,$event)"
+         :value="item.name"
          type="checkbox"
-         class="h-4 w-4 rounded border-carto-gray200 text-carto-pink focus:ring-carto-pink"
-  >
-  <label :for="`filter-${item.name}`"
-         class="ml-3 flex flex-row gap-2 items-center"
-         :title="item.description || ''">
+         class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+  <label :for="`mobile-${item.name}`" class="ml-3 flex flex-row gap-2 items-center">
     <img :src="`${config.public.BOTTIN_URL}${icons[item.name]['icon']}`" alt="icon"
          class="w-6 h-6"/>
     <span class="text-sm text-carto-main">{{ item.name }} ({{ item.count }})</span>

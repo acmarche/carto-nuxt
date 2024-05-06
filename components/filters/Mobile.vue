@@ -1,5 +1,4 @@
 <script setup>
-const config = useRuntimeConfig()
 defineProps({
   data: {
     type: Object,
@@ -113,16 +112,7 @@ function toggleCollapsation(id) {
                   <div class="px-4 pb-2 pt-4" id="filter-section-0" v-show="tabOpen === index">
                     <div class="space-y-6">
                       <div class="flex items-center" v-for="(item) in items" :key="item.name">
-                        <input :id="`mobile-${item.name}`" :name="`${groupName}[]`"
-                               @change="manageFilters2(groupName,item.name,$event)"
-                               :value="item.name"
-                               type="checkbox"
-                               class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-                        <label :for="`mobile-${item.name}`" class="ml-3 flex flex-row gap-2 items-center">
-                          <img :src="`${config.public.BOTTIN_URL}${data.icons[item.name]['icon']}`" alt="icon"
-                               class="w-6 h-6"/>
-                          <span class="text-sm text-carto-main">{{ item.name }} ({{ item.count }})</span>
-                        </label>
+                        <FiltersItemMobile :item :groupName :icons="data.icons" :manageFilters2="manageFilters2"/>
                       </div>
                     </div>
                   </div>
