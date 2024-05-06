@@ -1,7 +1,5 @@
 <script setup>
 import {IconFilter} from '@tabler/icons-vue'
-const config = useRuntimeConfig()
-
 const filters = defineModel('filters')
 defineProps({
   data: {
@@ -10,20 +8,8 @@ defineProps({
   }
 })
 const menuOpen = defineModel('menuOpen')
-
 function manageFilters2(name, value, event) {
   manageFilters(filters, name, value, event)
-}
-
-function isChecked(name, value) {
-  if (name === 'localite') {
-    if (filters.value.localite === null) {
-      return false
-    }
-    return filters.value.localite === value
-  }
-  const index = filters.value.tags.indexOf(value)
-  return index !== -1
 }
 </script>
 <template>
@@ -50,17 +36,7 @@ function isChecked(name, value) {
               </legend>
               <div class="space-y-3 pt-6">
                 <div v-for="item in items" class="flex flex-row items-center" :key="item.name">
-                  <input :id="`filter-${item.name}`" :name="`${groupName}[]`" :value="item.name"
-                         :checked="isChecked(groupName,item.name)"
-                         @change="manageFilters2(groupName,item.name,$event)"
-                         type="checkbox"
-                         class="h-4 w-4 rounded border-carto-gray200 text-carto-pink focus:ring-carto-pink"
-                  >
-                  <label :for="`filter-${item.name}`"
-                         class="ml-3 flex flex-row gap-2 items-center">
-                    <img :src="`${config.public.BOTTIN_URL}${data.icons[item.name]['icon']}`" alt="icon" class="w-6 h-6"/>
-                    <span class="text-sm text-carto-main">{{ item.name }} ({{ item.count }})</span>
-                  </label>
+                  <FiltersItemXl :item :groupName :icons="data.icons" v-model:filters="filters" :manageFilters2="manageFilters2"/>
                 </div>
               </div>
             </fieldset>
