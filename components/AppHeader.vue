@@ -61,6 +61,12 @@ const menuSelected = defineModel('menuSelected')
              alt="logo marche"
              src="/images/Marche_logo_transparent_pt.png">
       </NuxtLink>
+      <NuxtLink to="https://adl.marche.be" target="_blank" class="hidden lg:flex mr-12 hover:text-carto-main flex-row gap-2"
+         title="Agence de Développement Local">
+        <img class="w-24 hover:opacity-70"
+             alt="logo marche"
+             src="/images/ADL_Logo.png">
+      </NuxtLink>
     </nav>
     <div v-if="errorGeoloc"
          class="p-4 mb-4 text-sm text-carto-pink rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
