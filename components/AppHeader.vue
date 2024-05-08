@@ -55,7 +55,7 @@ const menuSelected = defineModel('menuSelected')
             </span>
         </button>
       </div>
-      <NuxtLink to="https://www.marche.be" target="_blank" class="hidden lg:flex mr-12 hover:text-carto-main flex-row gap-2"
+      <NuxtLink to="https://www.marche.be" target="_blank" class="hidden lg:flex mr-3 hover:text-carto-main flex-row gap-2"
          title="Site de la Ville">
         <img class="w-24 hover:opacity-70"
              alt="logo marche"
