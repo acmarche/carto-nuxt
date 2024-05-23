@@ -1,4 +1,6 @@
 <script setup>
+//todo https://medium.com/@smhabibjr/implement-an-interactive-map-in-the-vue-js-8a865010fb41
+//todo https://github.com/Gugustinette/Nuxt-Leaflet/tree/main
 import 'leaflet/dist/leaflet.css'
 import {IconMapUp} from "@tabler/icons-vue";
 const config = useRuntimeConfig()
