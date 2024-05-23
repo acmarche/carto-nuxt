@@ -97,7 +97,7 @@ function toggleCollapsation(id) {
 
                                                 Open: "-rotate-180", Closed: "rotate-0"
                                               -->
-                                              <svg class="rotate-0 h-5 w-5 transform" viewBox="0 0 20 20"
+                                              <svg class="h-5 w-5 transform" viewBox="0 0 20 20"
                                                    fill="currentColor"
                                                    aria-hidden="true"
                                                    x-state:on="Open" x-state:off="Closed"
