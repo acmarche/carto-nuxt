@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
     devtools: {enabled: true},
     debug: false,
-    modules: ['@nuxtjs/tailwindcss', '@nuxtjs/google-fonts'],
+    modules: ['@nuxtjs/tailwindcss', '@nuxtjs/google-fonts', "nuxt-gtag"],
     plugins: [
         {src: '~/plugins/leaflet.ts', mode: 'client'}
     ],
@@ -34,6 +34,7 @@ export default defineNuxtConfig({
             BOTTIN_URL: process.env.BOTTIN_URL,
             NUXT_APP_BASE_URL: process.env.NUXT_APP_BASE_URL || '/',
             VISIT_URL: process.env.VISIT_URL,
+            GTAG_ID: process.env.GTAG_ID,
         },
     },
 })
