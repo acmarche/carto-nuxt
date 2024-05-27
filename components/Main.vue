@@ -68,7 +68,7 @@ watch(() => propos.coords, (newValue, oldValue) => {
           <div class="flex flex-row items-center justify-between">
             <h2 class="text-xl lg:text-3xl text-carto-pink py-3 px-3"
                 id="count-result">
-              {{ data.count }} commerces trouvés
+              {{ data.count }} acteurs et intervenants trouvés
             </h2>
             <NuxtLink :to="`${config.public.BOTTIN_URL}/circuit-court.pdf`" class="flex flex-row gap-2 mr-3" target="_blank" download>
               <IconDownload class="h-6 w-6"/>
