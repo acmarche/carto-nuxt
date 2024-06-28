@@ -6,6 +6,9 @@ export default defineNuxtConfig({
     plugins: [
         {src: '~/plugins/leaflet.ts', mode: 'client'}
     ],
+    gtag: {
+        id: 'G-DTDNKKCCQY'
+    },
     app: {
         rootId: 'app',
         head: {
