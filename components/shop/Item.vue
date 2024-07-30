@@ -36,10 +36,10 @@ const link = computed(() => {
         <span class="text-base text-gray-600">{{ fiche.localite }} - {{ fiche.rue }} {{ fiche.numero }}</span>
         <span class="text-sm italic text-gray-500">{{ fiche.telephone }} {{ fiche.gsm }}</span>
       </h3>
-      <p class="text-base text-carto-gray200 mr-2" v-if="fiche.comment1">
+      <p class="text-base text-carto-gray300 mr-2 prose lg:prose-xl" v-if="fiche.comment1">
         {{ fiche.comment1 }}
       </p>
-      <p class="block mt-2">
+      <p class="block mt-2 prose lg:prose-xl">
         <span v-for="secteur in fiche.secteurs" class="text-base text-carto-gray200 mr-2">{{ secteur }}</span>
       </p>
     </div>
