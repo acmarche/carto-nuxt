@@ -65,9 +65,9 @@ const breadcrumb = [
             <ShopSocial :shop/>
             <h3 class="lg lobster-two-bold">SECTEURS</h3>
             <ShopSecteur :shop/>
-            <p v-if="shop.comment1">{{ shop.comment1 }}</p>
-            <p v-if="shop.comment2">{{ shop.comment2 }}</p>
-            <p v-if="shop.comment3">{{ shop.comment3 }}</p>
+            <p class="prose lg:prose-xl" v-if="shop.comment1">{{ shop.comment1 }}</p>
+            <p class="prose lg:prose-xl" v-if="shop.comment2">{{ shop.comment2 }}</p>
+            <p class="prose lg:prose-xl" v-if="shop.comment3">{{ shop.comment3 }}</p>
             <ShopGallery :shop/>
           </div>
         </section>
