@@ -10,7 +10,7 @@ const {shop} = defineProps<{
 <template>
   <section class="flex flex-col">
     <ul>
-      <li v-for="secteur in shop.classements" class="flex flex-row items-center  gap-2" :key="secteur.id">
+      <li v-for="secteur in shop.classements" class="flex flex-row items-center gap-2" :key="secteur.id">
         <img :src="`${config.public.BOTTIN_URL}/bottin/icons/${secteur.icon}`" v-if="secteur.icon" alt="icon"
              class="h-8 w-8"
              aria-hidden="true"/>
