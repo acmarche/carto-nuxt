@@ -19,10 +19,12 @@ const {shop} = defineProps<{
       </li>
     </ul>
     <ul class="mt-2">
-      <li v-for="tag in shop.tagsObject" class="flex flex-row items-center gap-2" :key="tag.id">
-        <img :src="`${config.public.BOTTIN_URL}/bottin/tags/${tag.icon}`" alt="icon" class="w-8 h-8" v-if="tag.icon"/>
-        <IconTag class="h-8 w-8" aria-hidden="true" v-else/>
-        <span :title="tag.description">{{ tag.name }}</span>
+      <li v-for="tag in shop.tagsObject" :key="tag.id">
+        <NuxtLink :to="`/tag/${tag.slug}`" class="flex flex-row items-center gap-2">
+          <img :src="`${config.public.BOTTIN_URL}/bottin/tags/${tag.icon}`" alt="icon" class="w-8 h-8" v-if="tag.icon"/>
+          <IconTag class="h-8 w-8" aria-hidden="true" v-else/>
+          <span :title="tag.description">{{ tag.name }}</span>
+        </NuxtLink>
       </li>
     </ul>
   </section>
