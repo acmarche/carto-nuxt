@@ -1,5 +1,4 @@
 <script setup>
-const config = useRuntimeConfig()
 defineProps({
   data: {
     type: Object,

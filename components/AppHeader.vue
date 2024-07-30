@@ -25,13 +25,13 @@ defineProps({
         <NuxtLink class="flex flex-col flex-wrap justify-center items-center hover:text-carto-pink" type="button"
                   title="Carte"
                   to="/carte">
-          <IconMap class="w-12 h-12"/>
+          <IconMap class="w-8 h-8"/>
           <span class="text-base lg:text-lg">Carte</span>
         </NuxtLink>
         <NuxtLink class="flex flex-col flex-wrap justify-center items-center hover:text-carto-pink" type="button"
                   title="Liste"
                   to="/commerce">
-          <IconList class="w-12 h-12"/>
+          <IconList class="w-8 h-8"/>
           <span class="text-base lg:text-lg hover:text-carto-main">
                 Liste
             </span>
@@ -39,7 +39,7 @@ defineProps({
         <NuxtLink class="flex flex-col flex-wrap justify-center items-center hover:text-carto-pink" type="button"
                   title="Localisation"
                   to="/geolocalisation">
-          <IconCurrentLocation class="w-12 h-12"/>
+          <IconCurrentLocation class="w-8 h-8"/>
           <span class=" text-base lg:text-lg hover:text-carto-gray300">
                 Autour de moi
             </span>
@@ -47,7 +47,7 @@ defineProps({
         <NuxtLink class="flex flex-col flex-wrap justify-center items-center hover:text-carto-pink" type="button"
                   title="Localisation"
                   to="/about">
-          <IconInfoCircle class="w-12 h-12"/>
+          <IconInfoCircle class="w-8 h-8"/>
           <span class="hidden md:inline text-base lg:text-lg hover:text-carto-gray300">
                 A propos de
             </span>

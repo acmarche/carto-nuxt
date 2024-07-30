@@ -22,7 +22,7 @@ const {shop} = defineProps<{
       <li v-for="tag in shop.tagsObject" class="flex flex-row items-center gap-2" :key="tag.id">
         <img :src="`${config.public.BOTTIN_URL}/bottin/tags/${tag.icon}`" alt="icon" class="w-8 h-8" v-if="tag.icon"/>
         <IconTag class="h-8 w-8" aria-hidden="true" v-else/>
-        <span>{{ tag.name }}</span>
+        <span :title="tag.description">{{ tag.name }}</span>
       </li>
     </ul>
   </section>

@@ -29,7 +29,7 @@ const link = computed(() => {
     </div>
     <div class="flex flex-1 flex-col space-y-2 p-2 h-72">
       <h3 class="text-xl text-carto-gray300 roboto-bold flex flex-col">
-        <NuxtLink :to="link" target="_blank">
+        <NuxtLink :to="link">
           <span aria-hidden="true" class="absolute inset-0"></span>
           {{ fiche.societe }}
         </NuxtLink>

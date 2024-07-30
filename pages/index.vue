@@ -4,7 +4,7 @@ const config = useRuntimeConfig()
 const filters = ref({localite: null, tags: [], coordinates: null})
 const shopRef = ref(null)
 const previewOpen = ref(false)
-const name = 'Accueil'
+const name = 'Carte'
 const description = ''
 useSeoMeta({
   title: () => `${name ?? ''}`,

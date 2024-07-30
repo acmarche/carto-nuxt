@@ -18,14 +18,14 @@ const {shop} = defineProps<{
     </p>
 
     <p v-if="shop.gsm" class="flex flex-row justify-between p-2">
-      <IconDeviceMobile/>
+      <IconDeviceMobile class="h-8 w-8"/>
       <a :href="`tel:${prettyPhone(shop.cap?.gsm)}`" class="hover:text-carto-pink hover:opacity-80">
         {{ prettyPhone(shop.gsm) }}
       </a>
     </p>
 
     <p v-if="shop.email" class="flex flex-row justify-between p-2">
-      <IconMail/>
+      <IconMail class="h-8 w-8"/>
       <a :href="`mailto:${shop.email}`" class="hover:text-carto-pink hover:opacity-80">
         {{ shop.email }}
       </a>
