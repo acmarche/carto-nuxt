@@ -24,7 +24,7 @@ defineProps({
       <div class="mx-auto flex flex-row gap-4 roboto-medium">
         <NuxtLink class="flex flex-col flex-wrap justify-center items-center hover:text-carto-pink" type="button"
                   title="Carte"
-                  to="/carte">
+                  to="/">
           <IconMap class="w-8 h-8"/>
           <span class="text-base lg:text-lg">Carte</span>
         </NuxtLink>
