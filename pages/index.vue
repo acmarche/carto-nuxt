@@ -29,7 +29,7 @@ const menuOpen = defineModel('menuOpen')
 <template>
   <main @esca="menuOpen = false" v-if="data">
     <WidgetsError :error="error.message" v-if="error"/>
-    <FiltersMobile v-model:filters="filters" v-model:menu-open="menuOpen" :data="data"/>
+    <FiltersMobile v-model:filters="filters" v-model:menu-open="menuOpen" :data/>
     <ShopPreview v-model:preview-open="previewOpen" :shop-ref="shopRef" :key="shopRef"/>
     <div class="mx-auto max-w-full px-0 py-8 sm:px-6 sm:py-12 lg:px-8">
       <div class="border-b border-gray-200 pb-6 px-4 sm:px-0">

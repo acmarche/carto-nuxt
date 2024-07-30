@@ -17,18 +17,18 @@ const {
   errorShop
 } = shopGet(slug)
 useSeoMeta({
-  title: () => `${shop?.value.societe ?? 'x'}`,
+  title: () => `${shop.value?.societe ?? ''}`,
 })
 const cover = computed(() => {
-  if (shop?.value.logo) {
-    return shop.value.logo
+  if (shop.value?.logo) {
+    return shop.value?.logo
   }
-  const image = shop?.value.images.length > 0 ? shop.value.images[0] : null
+  const image = shop.value?.images.length > 0 ? shop.value.images[0] : null
   if (image)
     return `${config.public.BOTTIN_URL}/bottin/fiches/${shop.value.id}/${image.image_name}`
-  if (shop?.value.cap) {
-    if (shop?.value.cap.profileMediaPath) {
-      return `https://cap.marche.be/${shop?.value.cap.profileMediaPath}`
+  if (shop.value?.cap) {
+    if (shop.value?.cap.profileMediaPath) {
+      return `https://cap.marche.be/${shop.value?.cap.profileMediaPath}`
     }
   }
   return 'https://picsum.photos/1280'

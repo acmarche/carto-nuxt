@@ -15,7 +15,7 @@ const {
     <div v-if="error">{{ error }}</div>
     <div v-if="pending">Chargement...</div>
     <div>
-      <WidgetsTitle>Liste</WidgetsTitle>
+      <WidgetsTitle>Liste des acteurs</WidgetsTitle>
       <ListResult :data v-if="data"/>
     </div>
   </section>

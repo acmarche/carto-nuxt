@@ -23,7 +23,7 @@ defineProps({
       <TransitionGroup name="list" tag="ul"
                        class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 sm:gap-x-6 sm:gap-y-4 lg:gap-x-4">
         <li class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white45"
-            v-for="fiche in data.hits" :key="fiche.id">
+            v-for="fiche in data?.hits" :key="fiche.id">
           <ShopItem :fiche/>
         </li>
       </TransitionGroup>
