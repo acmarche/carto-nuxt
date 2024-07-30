@@ -3,16 +3,13 @@
 //todo https://github.com/Gugustinette/Nuxt-Leaflet/tree/main
 import 'leaflet/dist/leaflet.css'
 import {IconMapUp} from "@tabler/icons-vue";
+
 const config = useRuntimeConfig()
 const propos = defineProps({
   data: {
     type: Object,
     required: true
   },
-  menuSelected: {
-    type: String,
-    required: true
-  }
 })
 const previewOpen = defineModel('previewOpen')
 const shopRef = defineModel('shopRef')
@@ -95,12 +92,12 @@ function addMarkersGrouped() {
 }
 </script>
 <template>
-  <section class="relative overflow-hidden "
-           v-show="menuSelected === 'map'">
+  <section class="relative overflow-hidden ">
     <div class="mx-auto px-0 py-0 sm:px-4 sm:py-2 w-screen h-dvh" id="openmap">
 
     </div>
-    <button type="button" class="absolute bottom-0 right-0 mx-2 mb-6 z-[1000] md:hidden" @click="scrollUp" title="Remonter" >
+    <button type="button" class="absolute bottom-0 right-0 mx-2 mb-6 z-[1000] md:hidden" @click="scrollUp"
+            title="Remonter">
       <IconMapUp class="w-12 h-12  hover:text-carto-pink"/>
     </button>
   </section>

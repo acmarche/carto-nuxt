@@ -6,7 +6,6 @@ const {fiche} = defineProps({
     required: true
   }
 })
-
 const image = computed(() => {
   if (fiche.image)
     return `${config.public.BOTTIN_URL}/${fiche.image}`
@@ -15,32 +14,10 @@ const image = computed(() => {
       return `https://cap.marche.be/${fiche.cap.profileMediaPath}`
     }
   }
-
   return 'https://picsum.photos/1280'
 })
-
 const link = computed(() => {
-  if (fiche.facebook) {
-    return fiche.facebook
-  }
-
-  if (fiche.instagram) {
-    return fiche.instagram
-  }
-
-  if (fiche.website) {
-    return fiche.website
-  }
-
-  if (fiche.tiktok) {
-    return fiche.tiktok
-  }
-
-  if (fiche.twitter) {
-    return fiche.twitter
-  }
-
-  return fiche.url_cap
+  return `/commerce/${fiche.slug}`
 })
 </script>
 <template>

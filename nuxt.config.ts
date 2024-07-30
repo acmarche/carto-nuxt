@@ -2,7 +2,12 @@
 export default defineNuxtConfig({
     devtools: {enabled: true},
     debug: false,
-    modules: ['@nuxtjs/tailwindcss', '@nuxtjs/google-fonts', "nuxt-gtag"],
+    modules: ['@nuxtjs/tailwindcss', ["@nuxtjs/google-fonts", {
+        families: {
+            Roboto: true,
+            Lobster: true,
+        }
+    }], "nuxt-gtag", "@nuxt/image"],
     plugins: [
         {src: '~/plugins/leaflet.ts', mode: 'client'}
     ],
@@ -11,6 +16,7 @@ export default defineNuxtConfig({
     },
     app: {
         rootId: 'app',
+        pageTransition: {name: 'page', mode: 'out-in'},
         head: {
             link: [
                 {
@@ -40,4 +46,5 @@ export default defineNuxtConfig({
             GTAG_ID: process.env.GTAG_ID,
         },
     },
+    compatibilityDate: '2024-07-03',
 })
