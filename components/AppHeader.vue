@@ -18,9 +18,11 @@ defineProps({
   <header class="bg-carto-green">
     <nav class="flex items-center justify-between p-6 lg:px-8 text-white" aria-label="Global">
       <div class="flex lg:flex-1">
-        <NuxtLink to="/" class="-m-1.5 p-1.5">
-          <span class="sr-only">Marche-en-Famenne</span>
-          <NuxtImg class="w-24 hover:opacity-70" src="/images/Marche_logo_transparent_pt.png" alt=""/>
+        <NuxtLink to="/" class="-m-1.5 p-1.5 ">
+          <h1 class="lg:ml-3 lobster-two-bold flex items-center flex-row md:gap-3">
+            <span class="text-xl md:text-3xl mr-2 lg:mr-0">Circuit court</span>
+            <span class="text-base md:text-3xl">Marche-en-Famenne</span>
+          </h1>
         </NuxtLink>
       </div>
       <div class="flex lg:hidden">
@@ -55,22 +57,38 @@ defineProps({
           <span>A propos de</span>
         </NuxtLink>
       </div>
-      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-2">
+        <NuxtLink to="https://www.marche.be" target="_blank"
+                  class="hover:text-carto-main flex-row gap-2"
+                  title="Site de la Ville">
+          <img class="w-24 hover:opacity-70"
+               alt="logo marche"
+               src="/images/Marche_logo_transparent_pt.png">
+        </NuxtLink>
+        <NuxtLink to="https://adl.marche.be" target="_blank"
+                  class="mr-12 hover:text-carto-main flex-row gap-2"
+                  title="Agence de Développement Local">
+          <img class="w-24 hover:opacity-70"
+               alt="logo marche"
+               src="/images/ADL_Logo.png">
+        </NuxtLink>
       </div>
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->
     <div class="lg:hidden" role="dialog" aria-modal="true"
          v-if="mobileMenuOpen">
       <!-- Background backdrop, show/hide based on slide-over state. -->
-      <div class="fixed inset-0 z-10"></div>
+      <div class="fixed inset-0 z-10" v-if="mobileMenuOpen"></div>
       <div
-          class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          class="fixed inset-y-0 right-0 z-10 w-full overfl44ow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
         <div class="flex items-center justify-between">
-          <a href="#" class="-m-1.5 p-1.5">
+          <NuxtLink to="https://www.marche.be" class="-m-1.5 p-1.5" target="_blank">
             <span class="sr-only">Your Company</span>
-            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
-          </a>
+            <NuxtImg class="h-8 w-auto" src="/images/Marche_logo_transparent_pt.png" alt=""/>
+          </NuxtLink>
+          <NuxtLink to="https://adl.marche.be" class="-m-1.5 p-1.5" target="_blank">
+            <NuxtImg class="h-8 w-auto" src="/images/ADL_logo_Noir.png" alt=""/>
+          </NuxtLink>
           <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700"
                   @click="mobileMenuOpen = false">
             <span class="sr-only">Close menu</span>
@@ -105,9 +123,20 @@ defineProps({
               </NuxtLink>
             </div>
             <div class="py-6">
-              <a href="#"
-                 class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log
-                in</a>
+              <NuxtLink to="https://www.marche.be" target="_blank"
+                        class="hidden lg:flex mr-3 hover:text-carto-main flex-row gap-2"
+                        title="Site de la Ville">
+                <img class="w-24 hover:opacity-70"
+                     alt="logo marche"
+                     src="/images/Marche_logo_transparent_pt.png">
+              </NuxtLink>
+              <NuxtLink to="https://adl.marche.be" target="_blank"
+                        class="hidden lg:flex mr-12 hover:text-carto-main flex-row gap-2"
+                        title="Agence de Développement Local">
+                <img class="w-24 hover:opacity-70"
+                     alt="logo marche"
+                     src="/images/ADL_Logo.png">
+              </NuxtLink>
             </div>
           </div>
         </div>
