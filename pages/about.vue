@@ -4,10 +4,10 @@ useSeoMeta({
 })
 </script>
 <template>
-  <section class="mx-auto max-w-full px-0 py-8 sm:px-6 sm:py-12 lg:px-8 border border-dashed border-gray-400 ">
+  <section class="mx-auto h-svh max-w-full px-0 py-8 sm:px-6 sm:py-12 lg:px-8 border border-dashed border-gray-400 ">
     <WidgetsTitle>A propos de cette plate-forme</WidgetsTitle>
+    <h2 class="text-lg md:text-2xl text-carto-pink mb-3">Le saviez-vous?</h2>
     <div class="mx-auto max-w-2xl px-4 py-4 sm:px-4 sm:py-4 lg:max-w-full lg:px-4">
-      <h2 class="text-lg md:text-2xl text-carto-pink mb-3">Le saviez-vous?</h2>
       <article class="text-base md:text-lg text-carto-main">
         Dans la commune de Marche-en-Famenne, vous trouvez de nombreux produits locaux:<br/>
         fraise, fromage, glace, légume, bière, viande, pain, farine...
