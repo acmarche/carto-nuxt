@@ -7,7 +7,7 @@ defineProps({
 })
 
 const tabOpen = ref(-1)
-const menuOpen = defineModel('menuOpen')
+const menuFiltersOpen = defineModel('menuFiltersOpen')
 const filters = defineModel('filters')
 
 function manageFilters2(name, value, event) {
@@ -25,10 +25,10 @@ function toggleCollapsation(id) {
 <template>
   <!--
   Mobile filter dialog
-@click.outside="menuOpen = false"
+@click.outside="menuFiltersOpen = false"
   Off-canvas menu for mobile, show/hide based on off-canvas menu state.
 -->
-  <div v-show="menuOpen" class="relative z-[1000] lg:hidden " role="dialog" aria-modal="true">
+  <div v-show="menuFiltersOpen" class="relative z-[1000] lg:hidden " role="dialog" aria-modal="true">
     <!--
       Off-canvas menu backdrop, show/hide based on off-canvas menu state.
 
@@ -45,7 +45,7 @@ function toggleCollapsation(id) {
                 leave-active-class="transition-opacity ease-linear duration-300"
                 leave-from-class="opacity-100"
                 leave-to-class="opacity-0">
-      <div v-show="menuOpen" class="fixed inset-0 bg-carto-main bg-opacity-25 backdrop-blur-sm"></div>
+      <div v-show="menuFiltersOpen" class="fixed inset-0 bg-carto-main bg-opacity-25 backdrop-blur-sm"></div>
     </Transition>
     <div class="fixed inset-0  flex">
       <!--
@@ -64,13 +64,13 @@ function toggleCollapsation(id) {
                   leave-active-class="transition ease-in-out duration-300 transform"
                   leave-from-class="translate-x-0"
                   leave-to-class="translate-x-full">
-        <div v-show="menuOpen"
+        <div v-show="menuFiltersOpen"
              class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl">
           <div class="flex items-center justify-between px-4">
             <h2 class="text-lg font-medium text-carto-main">Filières et localités</h2>
             <button type="button"
                     class="-mr-2 flex h-10 w-10 items-center justify-center p-2 text-carto-gray200 hover:text-carto-gray300"
-                    @click="menuOpen = false">
+                    @click="menuFiltersOpen = false">
               <span class="sr-only">Fermer le menu</span>
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                    stroke="currentColor" aria-hidden="true">

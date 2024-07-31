@@ -1,5 +1,6 @@
 <script setup>
 import {IconDownload} from '@tabler/icons-vue';
+
 const config = useRuntimeConfig()
 const filters = ref({localite: null, tags: [], coordinates: null})
 const shopRef = ref(null)
@@ -24,12 +25,12 @@ const {
   data,
   error
 } = updateSearchGet(filters)
-const menuOpen = defineModel('menuOpen')
+const menuFiltersOpen = defineModel('menuFiltersOpen')
 </script>
 <template>
-  <main @esca="menuOpen = false" v-if="data">
+  <main @esca="menuFiltersOpen = false" v-if="data">
     <WidgetsError :error="error.message" v-if="error"/>
-    <FiltersMobile v-model:filters="filters" v-model:menu-open="menuOpen" :data/>
+    <FiltersMobile v-model:filters="filters" v-model:menu-filters-open="menuFiltersOpen" :data/>
     <ShopPreview v-model:preview-open="previewOpen" :shop-ref="shopRef" :key="shopRef"/>
     <div class="mx-auto max-w-full px-0 py-8 sm:px-6 sm:py-12 lg:px-8">
       <div class="border-b border-gray-200 pb-6 px-4 sm:px-0">
@@ -49,11 +50,12 @@ const menuOpen = defineModel('menuOpen')
           la commune de Marche-en-Famenne.
         </p>
       </div>
-      <div class="pt-8 grid grid-cols-1 lg:gap-x-8 lg:grid-cols-[auto_minmax(0,1fr)]">
-        <FiltersXl v-model:filters="filters" v-model:menu-open="menuOpen" :data/>
-        <div class="mt-6 lg:mt-0">
+      <FiltersBtnOpenMenu v-model:menu-filters-open="menuFiltersOpen"/>
+      <div class="pt-4 grid grid-cols-1 lg:gap-x-8 lg:grid-cols-[auto_minmax(0,1fr)]">
+        <FiltersXl v-model:filters="filters" :data/>
+        <div class="">
           <div class="flex flex-row items-center justify-between">
-            <h2 class="text-xl lg:text-3xl text-carto-pink py-3 px-3"
+            <h2 class="text-xl lg:text-3xl text-carto-pink px-3 my-2"
                 id="count-result">
               {{ data.count }} acteurs et intervenants trouvés
             </h2>
