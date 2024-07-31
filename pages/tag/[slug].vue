@@ -5,7 +5,7 @@ useSeoMeta({
 })
 const filters = ref({tags: [slug]})
 const {
-  pending,
+  status,
   data,
   error
 } = updateSearchGet(filters)
@@ -14,14 +14,15 @@ const {
 <template>
   <section class="mx-auto max-w-full px-0 py-8 sm:px-6 sm:py-12 lg:px-8">
     <WidgetsTitle>Par tag {{ slug }}</WidgetsTitle>
-    <div v-if="pending">Chargement</div>
+    <WidgetsLoader v-if="status==='pending'"/>
     <div v-if="error">{{ error }}</div>
     <div v-if="data">
       <ul>
         <li v-for="(items,groupName, index) in data.filters" :key="index">
           <span class="font-semibold">{{ groupName }}</span>
           <ul v-if="groupName !== 'localite'" class="flex flex-row gap-2 pl-3">
-            <li v-for="tag in items" class="border border-amber-100 rounded-lg p-3 bg-carto-pink text-white hover:text-amber-50">
+            <li v-for="tag in items"
+                class="border border-amber-100 rounded-lg p-3 bg-carto-pink text-white hover:text-amber-50">
               <NuxtLink :to="`/tag/${tag.slug}`">
                 {{ tag.name }}
               </NuxtLink>

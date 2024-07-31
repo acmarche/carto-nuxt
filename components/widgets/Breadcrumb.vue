@@ -6,11 +6,8 @@ const props = defineProps({
     required: false,
     default: [
       {
-        name: "Nos espaces", link: "/espace", id: 1
+        name: "Accueil", link: "/", id: 1
       },
-      {
-        name: "Co-Working", link: "/espace/co-working", id: 2
-      }
     ]
   }
 })

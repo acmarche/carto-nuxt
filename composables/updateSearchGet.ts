@@ -1,7 +1,8 @@
 export default (args:Ref) => {
     const config = useRuntimeConfig()
+    console.log()
     const {
-        pending,
+        status,
         data,
         error
     } = useFetch(
@@ -11,7 +12,7 @@ export default (args:Ref) => {
         }
     );
     return {
-        pending,
+        status,
         data,
         error
     };

@@ -17,7 +17,7 @@ const image = computed(() => {
   return 'https://picsum.photos/1280'
 })
 const link = computed(() => {
-  return `/commerce/${fiche.slug}`
+  return `/acteur/${fiche.slug}`
 })
 </script>
 <template>

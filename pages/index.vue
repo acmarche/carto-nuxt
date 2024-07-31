@@ -1,6 +1,5 @@
 <script setup>
 import {IconDownload} from '@tabler/icons-vue';
-
 const config = useRuntimeConfig()
 const filters = ref({localite: null, tags: [], coordinates: null})
 const shopRef = ref(null)
@@ -21,7 +20,7 @@ useHead({
   ]
 })
 const {
-  pending,
+  status,
   data,
   error
 } = updateSearchGet(filters)
@@ -30,6 +29,7 @@ const menuFiltersOpen = defineModel('menuFiltersOpen')
 <template>
   <main @esca="menuFiltersOpen = false" v-if="data">
     <WidgetsError :error="error.message" v-if="error"/>
+    <WidgetsLoader v-if="status==='pending'"/>
     <FiltersMobile v-model:filters="filters" v-model:menu-filters-open="menuFiltersOpen" :data/>
     <ShopPreview v-model:preview-open="previewOpen" :shop-ref="shopRef" :key="shopRef"/>
     <div class="mx-auto max-w-full px-0 py-8 sm:px-6 sm:py-12 lg:px-8">
@@ -55,10 +55,7 @@ const menuFiltersOpen = defineModel('menuFiltersOpen')
         <FiltersXl v-model:filters="filters" :data/>
         <div class="">
           <div class="flex flex-row items-center justify-between">
-            <h2 class="text-xl lg:text-3xl text-carto-pink px-3 my-2"
-                id="count-result">
-              {{ data.count }} acteurs et intervenants trouvés
-            </h2>
+            <ListTitle :count="data.count"/>
             <NuxtLink :to="`${config.public.BOTTIN_URL}/circuit-court.pdf`" class="flex flex-row gap-2 mr-3"
                       target="_blank" download>
               <IconDownload class="h-6 w-6"/>

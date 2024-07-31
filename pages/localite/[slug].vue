@@ -5,15 +5,15 @@ useSeoMeta({
 })
 const filters = ref({localite: slug})
 const {
-  pending,
+  status,
   data,
   error
 } = updateSearchGet(filters)
 </script>
 <template>
   <section class="mx-auto max-w-full px-0 py-8 sm:px-6 sm:py-12 lg:px-8">
-    <div v-if="error">{{ error }}</div>
-    <div v-if="pending">Chargement...</div>
+    <WidgetsError :error="error.message" v-if="error"/>
+    <WidgetsLoader v-if="status==='pending'"/>
     <WidgetsTitle>Par localité {{ slug }}</WidgetsTitle>
     <ul>
       <li v-for="(items,groupName, index) in data.filters" :key="index">

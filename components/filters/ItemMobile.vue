@@ -40,7 +40,8 @@ defineProps({
       </div>
     </Transition>
   </div>
-  <input :id="`mobile-${item.name}`" :name="`${groupName}[]`"
+  <input :id="`mobile-${item.name}`"
+         :name="`${groupName}[]`"
          @change="manageFilters2(groupName,item.name,$event)"
          :value="item.name"
          type="checkbox"

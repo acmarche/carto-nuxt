@@ -30,7 +30,7 @@ defineProps({
         </NuxtLink>
         <NuxtLink class="flex flex-col flex-wrap justify-center items-center hover:text-carto-pink" type="button"
                   title="Liste"
-                  to="/commerce">
+                  to="/acteur">
           <IconList class="w-8 h-8"/>
           <span class="text-base lg:text-lg hover:text-carto-main">
                 Liste

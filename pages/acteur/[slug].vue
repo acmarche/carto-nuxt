@@ -1,5 +1,6 @@
 <script setup>
 import {IconNavigation} from "@tabler/icons-vue";
+
 useHead({
   script: [
     {
@@ -40,7 +41,7 @@ const icon = computed(() => {
   else return "https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f4ec.svg"
 })
 const breadcrumb = [
-  {name: "Liste", link: "/commerce", id: 1}
+  {name: "Retour à la liste", link: "/acteur", id: 1}
 ]
 </script>
 <template>
@@ -49,9 +50,11 @@ const breadcrumb = [
     <div v-else-if="errorShop">{{ errorShop }}</div>
     <div v-else>
       <ShopHeader :cover :icon/>
-      <section class="mx-auto max-w-full ms-2 md:ms-24 py-8 border border-dashed border-gray-400 ">
+      <section class="mx-auto max-w-full ms-2 md:ms-24 py-2">
+        <WidgetsBreadcrumb :breadcrumb/>
+      </section>
+      <section class="mx-auto max-w-full ms-2 md:ms-24 py-2 border border-dashed border-gray-400 ">
         <section class="flex flex-col w-full h-full gap-2">
-          <WidgetsBreadcrumb :breadcrumb/>
           <WidgetsTitle>{{ shop?.societe ?? 'Chargement' }}</WidgetsTitle>
           <address class="flex w-fit flex-row items-start gap-2 text-carto-gray300 p-6">
             <IconNavigation class="h-12 w-12"/>
