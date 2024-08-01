@@ -2,7 +2,7 @@
 defineProps({
   icon: {
     type: String,
-    default: 'https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f4ec.svg',
+    default: 'https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f6cd-fe0f.svg',
     required: false,
   },
   cover: {

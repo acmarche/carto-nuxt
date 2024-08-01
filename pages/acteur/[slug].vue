@@ -1,6 +1,5 @@
 <script setup>
 import {IconNavigation} from "@tabler/icons-vue";
-
 useHead({
   script: [
     {
@@ -19,6 +18,7 @@ const {
 } = shopGet(slug)
 useSeoMeta({
   title: () => `${shop.value?.societe ?? ''}`,
+  description: () => `${shop.value?.comment1 ?? ''}`,
 })
 const cover = computed(() => {
   if (shop.value?.logo) {
@@ -35,10 +35,10 @@ const cover = computed(() => {
   return 'https://picsum.photos/1280'
 })
 const icon = computed(() => {
-  const tag = shop?.value?.tagsObject?.length > 0 ? shop.tagsObject.pmr : null
+  const tag = shop?.value?.classements?.length > 0 ? shop.value.classements[0] : null
   if (tag)
-    return `${config.public.BOTTIN_URL}/bottin/tags/${tag.icon}`
-  else return "https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f4ec.svg"
+    return `${config.public.BOTTIN_URL}/bottin/icons/${tag.icon}`
+  return tag
 })
 const breadcrumb = [
   {name: "Retour à la liste", link: "/acteur", id: 1}
