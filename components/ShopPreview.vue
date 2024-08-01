@@ -12,7 +12,7 @@ const {
   <!--
     shop Details dialog
   -->
-  <div v-show="previewOpen" class="relative z-[1000]" role="dialog" aria-modal="true">
+  <div v-show="previewOpen" class="relative z-30" role="dialog" aria-modal="true">
     <!--
       Off-canvas menu backdrop, show/hide based on off-canvas menu state.
 

@@ -28,7 +28,7 @@ function toggleCollapsation(id) {
 @click.outside="menuFiltersOpen = false"
   Off-canvas menu for mobile, show/hide based on off-canvas menu state.
 -->
-  <div v-show="menuFiltersOpen" class="relative z-[1000] lg:hidden " role="dialog" aria-modal="true">
+  <div v-show="menuFiltersOpen" class="relative z-30 lg:hidden " role="dialog" aria-modal="true">
     <!--
       Off-canvas menu backdrop, show/hide based on off-canvas menu state.
 

@@ -24,7 +24,7 @@ defineProps({
 })
 </script>
 <template>
-  <div v-show="openInfo" class="absolute w-56 mt-4" style="z-index: 1000;">
+  <div v-show="openInfo" class="absolute w-56 mt-4 z-30">
     <Transition
         enter-active-class="transition ease-out duration-700"
         enter-class="opacity-0 transform scale-95"

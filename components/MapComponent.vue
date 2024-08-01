@@ -96,9 +96,59 @@ function addMarkersGrouped() {
     <div class="mx-auto px-0 py-0 sm:px-4 sm:py-2 w-screen h-dvh" id="openmap">
 
     </div>
-    <button type="button" class="absolute bottom-0 right-0 mx-2 mb-6 z-[1000] md:hidden" @click="scrollUp"
+    <button type="button" class="absolute bottom-0 right-0 mx-2 mb-6 z-20 md:hidden" @click="scrollUp"
             title="Remonter">
       <IconMapUp class="w-12 h-12  hover:text-carto-pink"/>
     </button>
   </section>
 </template>
+<style>
+.leaflet-control {
+  z-index: 18; /*800*/
+}
+
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 20; /*1000*/
+}
+
+.leaflet-pane {
+  z-index: 14; /*400*/
+}
+
+.leaflet-tile-pane {
+  z-index: 12; /*200*/
+}
+
+.leaflet-overlay-pane {
+  z-index: 14; /*400*/
+}
+
+.leaflet-shadow-pane {
+  z-index: 15; /*500*/
+}
+
+.leaflet-marker-pane {
+  z-index: 16; /*600*/
+}
+
+.leaflet-tooltip-pane {
+  z-index: 16; /*650*/
+}
+
+.leaflet-popup-pane {
+  z-index: 17; /*700*/
+}
+
+.leaflet-map-pane canvas {
+  z-index: 11; /*100*/
+}
+
+.leaflet-map-pane svg {
+  z-index: 12; /*200*/
+}
+
+.leaflet-zoom-box {
+  z-index: 18; /*800*/
+}
+</style>
