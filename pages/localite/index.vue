@@ -22,11 +22,11 @@ useSeoMeta({
 const localite = computed(() => data.value?.filters?.localite ?? []);
 </script>
 <template>
-  <section class="mx-auto max-w-full px-0 py-8 sm:px-6 sm:py-12 lg:px-8">
+  <section class="mx-auto max-w-full px-2 py-8 sm:px-6 sm:py-12 lg:px-8">
     <WidgetsTitle>Par localité</WidgetsTitle>
     <WidgetsLoader v-if="status==='pending'"/>
     <WidgetsError :error="error.message" v-if="error"/>
-    <div v-if="localite" class="flex flex-row gap-2 pl-3 mt-3">
+    <div v-if="localite" class="flex flex-col md:flex-row gap-2 pl-3 mt-3">
       <WidgetsLink
           v-for="tag in localite"
           :to="`/localite/${tag.name}`"> {{ tag.name }}</WidgetsLink>
