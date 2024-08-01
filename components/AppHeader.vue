@@ -83,7 +83,7 @@ defineProps({
           class="fixed inset-y-0 right-0 z-10 w-full overfl44ow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
         <div class="flex items-center justify-between">
           <NuxtLink to="https://www.marche.be" class="-m-1.5 p-1.5" target="_blank">
-            <span class="sr-only">Your Company</span>
+            <span class="sr-only">Circuit court</span>
             <NuxtImg class="h-8 w-auto" src="/images/Marche_logo_transparent_pt.png" alt=""/>
           </NuxtLink>
           <NuxtLink to="https://adl.marche.be" class="-m-1.5 p-1.5" target="_blank">
@@ -102,21 +102,25 @@ defineProps({
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
               <NuxtLink to="/" title="Carte"
+                        @click="mobileMenuOpen = false"
                         class="flex flex-col justify-center items-center -mx-3  rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:text-carto-pink">
                 <IconMap class="w-8 h-8"/>
                 <span>Carte</span>
               </NuxtLink>
               <NuxtLink to="/acteur" title="Liste"
+                        @click="mobileMenuOpen = false"
                         class="flex flex-col justify-center items-center -mx-3  rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:text-carto-pink">
                 <IconList class="w-8 h-8"/>
                 <span>Liste</span>
               </NuxtLink>
               <NuxtLink to="/geolocalisation" title="Localisation"
+                        @click="mobileMenuOpen = false"
                         class="flex flex-col justify-center items-center -mx-3  rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:text-carto-pink">
                 <IconCurrentLocation class="w-8 h-8"/>
                 <span>Autour de moi</span>
               </NuxtLink>
               <NuxtLink to="/about" title="A propos de"
+                        @click="mobileMenuOpen = false"
                         class="flex flex-col justify-center items-center -mx-3  rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:text-carto-pink">
                 <IconInfoCircle class="w-8 h-8"/>
                 <span>A propos de</span>

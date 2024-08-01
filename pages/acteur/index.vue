@@ -16,7 +16,8 @@ const menuFiltersOpen = ref(false)
     <WidgetsError :error="error.message" v-if="error"/>
     <div v-if="data">
       <WidgetsTitle>Liste des acteurs</WidgetsTitle>
-      <FiltersBtnOpenMenu/>
+      <FiltersBtnOpenMenu v-model:menu-filters-open="menuFiltersOpen"/>
+      <FiltersMobile v-model:filters="filters" v-model:menu-filters-open="menuFiltersOpen" :data/>
       <ListTitle :count="data.count"/>
       <div class="pt-4 grid grid-cols-1 lg:grid-cols-[auto_minmax(0,1fr)] lg:gap-x-8">
         <FiltersXl v-model:filters="filters" v-model:menu-filters-open="menuFiltersOpen" :data/>
