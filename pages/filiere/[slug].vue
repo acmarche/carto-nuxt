@@ -22,7 +22,7 @@ watch(tag, (val) => {
     console.log('coucou')
     execute()
   }
-}, {deep: true, immediate: true})
+}, {deep: true, immediate: false})
 </script>
 <template>
   <section class="mx-auto max-w-full px-0 py-8 sm:px-6 sm:py-12 lg:px-8">
