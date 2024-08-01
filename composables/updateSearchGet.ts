@@ -1,6 +1,6 @@
 export default (args:Ref) => {
     const config = useRuntimeConfig()
-    console.log()
+    console.log(args.value)
     const {
         status,
         data,

@@ -1,9 +1,12 @@
 <script setup>
 const slug = useRoute().params.slug
 useSeoMeta({
-  title: () => `${slug ?? ''}`,
+  title: () => `Par localité ${slug ?? ''}`,
 })
 const filters = ref({localite: slug})
+const breadcrumb = [
+  {name: "Retour à la liste", link: "/localite", id: 1}
+]
 const {
   status,
   data,
@@ -14,6 +17,9 @@ const {
   <section class="mx-auto max-w-full px-0 py-8 sm:px-6 sm:py-12 lg:px-8">
     <WidgetsError :error="error.message" v-if="error"/>
     <WidgetsLoader v-if="status==='pending'"/>
+    <section class="mb-4 pl-2">
+        <WidgetsBreadcrumb :breadcrumb/>
+      </section>
     <WidgetsTitle>Par localité {{ slug }}</WidgetsTitle>
     <div v-if="data">
       <ListTitle :count="data.count"/>
@@ -23,7 +29,7 @@ const {
           <ShopItem :fiche/>
         </li>
       </ul>
-      <div class="prose lg:prose-xl" v-if="data.hits.length === 0">
+      <div class="prose lg:prose-xl" v-if="data.count === 0">
         Rien n'a été trouvé :-(
       </div>
     </div>
