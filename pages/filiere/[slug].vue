@@ -5,9 +5,9 @@ const breadcrumb = [
 const slug = useRoute().params.slug
 const items = ref([])
 const {tag} = tagGet(slug)
-const filters = ref({localite: null, tags: [], coordinates: null})
 
 function execute() {
+  const filters = ref({localite: null, tags: [tag?.value?.name], coordinates: null})
   const {
     status,
     data,
