@@ -31,7 +31,6 @@ watch(tag, (val) => {
     </section>
     <WidgetsTitle>Par filière <i class="text-carto-pink">{{ tag?.name }}</i></WidgetsTitle>
     <p class="text-carto-gray300 m-4">{{ tag?.description }}</p>
-    {{ items }}
     <ListTitle :count="items?.length"/>
     <div v-if="items?.length > 0">
       <ul class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 sm:gap-x-6 sm:gap-y-4 lg:gap-x-4 mt-4">
