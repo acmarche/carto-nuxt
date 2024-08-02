@@ -33,7 +33,7 @@ const menuFiltersOpen = defineModel('menuFiltersOpen')
     <FiltersMobile v-model:filters="filters" v-model:menu-filters-open="menuFiltersOpen" :data/>
     <ShopPreview v-model:preview-open="previewOpen" :shop-ref="shopRef" :key="shopRef"/>
     <div class="mx-auto max-w-full px-0 py-8 sm:px-6 sm:py-12 lg:px-8">
-      <CarteWelcome/>
+      <Welcome/>
       <FiltersBtnOpenMenu v-model:menu-filters-open="menuFiltersOpen"/>
       <div class="pt-4 grid grid-cols-1 lg:gap-x-8 lg:grid-cols-[auto_minmax(0,1fr)]">
         <FiltersXl v-model:filters="filters" :data/>
