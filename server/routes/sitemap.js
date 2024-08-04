@@ -24,6 +24,10 @@ export async function getPages(event) {
     })
     const pages = [
         {loc: config.public.SITE_URL + '/', lastmod: '2024-08-04', changefreq: 'weekly', priority: '1.0'},
+        {loc: config.public.SITE_URL + '/geolocalisation', lastmod: '2024-08-03', changefreq: 'monthly', priority: '0.8'},
+        {loc: config.public.SITE_URL + '/acteur', lastmod: '2024-08-03', changefreq: 'monthly', priority: '1'},
+        {loc: config.public.SITE_URL + '/localite', lastmod: '2024-08-03', changefreq: 'monthly', priority: '1'},
+        {loc: config.public.SITE_URL + '/filiere', lastmod: '2024-08-03', changefreq: 'monthly', priority: '1'},
         {loc: config.public.SITE_URL + '/about', lastmod: '2024-08-03', changefreq: 'monthly', priority: '0.8'},
     ];
     urls.forEach((url) => {
