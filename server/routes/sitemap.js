@@ -24,7 +24,12 @@ export async function getPages(event) {
     })
     const pages = [
         {loc: config.public.SITE_URL + '/', lastmod: '2024-08-04', changefreq: 'weekly', priority: '1.0'},
-        {loc: config.public.SITE_URL + '/geolocalisation', lastmod: '2024-08-03', changefreq: 'monthly', priority: '0.8'},
+        {
+            loc: config.public.SITE_URL + '/geolocalisation',
+            lastmod: '2024-08-03',
+            changefreq: 'monthly',
+            priority: '0.8'
+        },
         {loc: config.public.SITE_URL + '/acteur', lastmod: '2024-08-03', changefreq: 'monthly', priority: '1'},
         {loc: config.public.SITE_URL + '/localite', lastmod: '2024-08-03', changefreq: 'monthly', priority: '1'},
         {loc: config.public.SITE_URL + '/filiere', lastmod: '2024-08-03', changefreq: 'monthly', priority: '1'},
@@ -47,8 +52,12 @@ export async function getPages(event) {
         urlElement.ele('changefreq', url.changefreq);
         urlElement.ele('priority', url.priority);
     });
-    const xmlString = urlset.end({pretty: true});
-    return xmlString
+    return urlset.end({pretty: true})
 }
 
-export default defineEventHandler((event) => getPages(event));
+export default defineEventHandler((event) => {
+    setResponseHeaders(event, {
+        "Content-Type": "application/xml; charset=utf-8",
+    });
+    return getPages(event)
+});
