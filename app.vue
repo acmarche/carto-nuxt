@@ -1,31 +1,45 @@
 <script setup>
 const config = useRuntimeConfig()
-const title = ref('')
 useHead({
   link: [
-    {rel: 'apple-touch-icon', type: 'image/png', href: `${config.public.NUXT_APP_BASE_URL}favicon/apple-touch-icon.png`, sizes: '180x180'},
-    {rel: 'icon', type: 'image/png', href: `${config.public.NUXT_APP_BASE_URL}favicon/favicon-32x32.png`, sizes: '32x32'},
-    {rel: 'icon', type: 'image/png', href: `${config.public.NUXT_APP_BASE_URL}favicon/favicon-16x16.png`, sizes: '16x16'},
+    {
+      rel: 'apple-touch-icon',
+      type: 'image/png',
+      href: `${config.public.NUXT_APP_BASE_URL}favicon/apple-touch-icon.png`,
+      sizes: '180x180'
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      href: `${config.public.NUXT_APP_BASE_URL}favicon/favicon-32x32.png`,
+      sizes: '32x32'
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      href: `${config.public.NUXT_APP_BASE_URL}favicon/favicon-16x16.png`,
+      sizes: '16x16'
+    },
     {rel: 'manifest', type: 'image/png', href: `${config.public.NUXT_APP_BASE_URL}favicon/site.webmanifest`}
   ],
 })
 useSeoMeta({
   titleTemplate: (title) => `${title} | Circuit court - Producteurs locaux - Marche-en-Famenne`,
-  ogTitle: 'Circuit court - Producteurs locaux - Marche-en-Famenne',
-  description: 'This is my amazing site, let me tell you all about it.',
-  ogDescription: 'This is my amazing site, let me tell you all about it.',
-  ogImage: 'https://esquare.marche.be/new/images/batimentaerien.jpg',
-  ogUrl: '',
+  ogTitle: (title) => `${title} | Circuit court - Producteurs locaux - Marche-en-Famenne`,
+  description: (description) => description ?? 'Vous trouvez de nombreux produits locaux:fraise, fromage, glace, légume, bière, viande, pain, farine...',
+  ogDescription: (description) => description ?? 'Vous trouvez de nombreux produits locaux:fraise, fromage, glace, légume, bière, viande, pain, farine...',
+  ogUrl: (url) => url ?? 'https://circuit-court.marche.be',
+  ogImage: (image) => image ?? 'https://circuit-court.marche.be/images/screenshot.png',
+  twitterTitle: (title) => `${title} | Circuit court - Producteurs locaux - Marche-en-Famenne`,
+  twitterDescription: (description) => description ?? 'Vous trouvez de nombreux produits locaux:fraise, fromage, glace, légume, bière, viande, pain, farine...',
+  twitterImage: (image) => image ?? 'https://circuit-court.marche.be/images/screenshot.png',
+  applicationName: 'Circuit court',
   ogLocale: 'fr_FR',
   twitterCard: 'summary_large_image',
-  twitterTitle: 'string',
-  twitterDescription: 'string',
-  twitterImage: 'string',
-  applicationName: 'E-square',
 })
 </script>
 <template>
-  <NuxtLoadingIndicator />
+  <NuxtLoadingIndicator/>
   <NuxtLayout>
     <NuxtPage/>
   </NuxtLayout>

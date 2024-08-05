@@ -1,5 +1,6 @@
 <script setup>
 import {IconNavigation} from "@tabler/icons-vue";
+
 useHead({
   script: [
     {
@@ -16,10 +17,6 @@ const {
   shop,
   errorShop
 } = shopGet(slug)
-useSeoMeta({
-  title: () => `${shop.value?.societe ?? ''}`,
-  description: () => `${shop.value?.comment1 ?? ''}`,
-})
 const cover = computed(() => {
   if (shop.value?.logo) {
     return shop.value?.logo
@@ -43,6 +40,19 @@ const icon = computed(() => {
 const breadcrumb = [
   {name: "Retour à la liste", link: "/acteur", id: 1}
 ]
+const url = useRequestURL()
+useSeoMeta({
+  title: () => `${shop.value?.societe ?? ''}`,
+  ogTitle: () => `${shop.value?.societe} | ${config.public.NUXT_SITE_NAME}`,
+  description: () => `${shop.value?.comment1}`,
+  ogImage: () => `${cover?.value}`,
+  ogUrl: () => url,
+  twitterTitle: () => {
+    `${shop.value?.societe} | ${config.public.NUXT_SITE_NAME}`
+  },
+  twitterDescription: () => `${shop.value?.comment1}`,
+  twitterImage: () => `${cover?.value}`,
+})
 </script>
 <template>
   <main class="">
