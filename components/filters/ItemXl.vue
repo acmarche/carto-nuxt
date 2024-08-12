@@ -4,7 +4,7 @@ import {IconInfoCircle} from '@tabler/icons-vue'
 const config = useRuntimeConfig()
 const filters = defineModel('filters')
 
-defineProps({
+const propos = defineProps({
   item: {
     type: Object,
     required: true
@@ -34,6 +34,13 @@ function isChecked(name, value) {
   const index = filters.value.tags.indexOf(value)
   return index !== -1
 }
+function icon(name) {
+  const iconName = propos.icons[name]?.icon ?? null;
+  if (iconName)
+    return config.public.BOTTIN_URL + iconName
+  else
+    return '/images/geolocation/marker-icon.png'
+}
 </script>
 <template>
   <div v-show="openInfo" class="absolute w-56 mt-4 z-30">
@@ -61,7 +68,7 @@ function isChecked(name, value) {
   <label :for="`filter-${item.name}`"
          class="ml-3 flex flex-row gap-2 items-center"
          :title="item.description || ''">
-    <img :src="`${config.public.BOTTIN_URL}${icons[item.name]['icon']}`" alt="icon"
+    <img :src="icon(item.name)" alt="icon"
          class="w-6 h-6"/>
     <span class="text-sm text-carto-main">{{ item.name }} ({{ item.count }})</span>
   </label>
