@@ -76,7 +76,7 @@ onMounted(() => {
 })
 
 function addMarkersGrouped() {
-  markers.clearLayers()
+  markers?.clearLayers()
   data.value.hits.forEach((fiche) => {
     const point = [fiche.latitude, fiche.longitude]
     const marker = $L.marker(new $L.LatLng(fiche.latitude, fiche.longitude), {
