@@ -64,11 +64,15 @@ onMounted(() => {
 
   map = $L.map('openmap').setView(center, zoom)
 
-  $L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+  //const url = 'https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png'
+  const url = 'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}'
+
+  $L.tileLayer(url, {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
     minZoom: 1,
     maxZoom: 20,
-    scrollWheelZoom: false
+    scrollWheelZoom: false,
+    subdomains:['mt0','mt1','mt2','mt3']
   }).addTo(map)
 
   markers = $L.markerClusterGroup();
