@@ -26,7 +26,7 @@
       </nav>
       <p class="mt-10 text-center leading-5">
         <NuxtLink to="https://www.marche.be/administration/rgpd">
-          &copy; 2024 Marche-en-Famanne, Administration communale. Tous droits réservés.
+          &copy; 2024 Marche-en-Famenne, Administration communale. Tous droits réservés.
         </NuxtLink>
       </p>
     </div>
