@@ -1,5 +1,6 @@
 export default () => {
     const config = useRuntimeConfig()
+    console.log( `${config.public.API_URL}/map/search`)
     const {
         pending,
         data,

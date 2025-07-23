@@ -48,5 +48,5 @@ export default defineNuxtConfig({
             GTAG_ID: process.env.GTAG_ID,
         },
     },
-    compatibilityDate: '2024-07-03',
+    compatibilityDate: '2025-07-15',
 })

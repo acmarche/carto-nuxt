@@ -63,9 +63,10 @@ onMounted(() => {
   const coordinates = ref([50.217845, 5.331049])
 
   map = $L.map('openmap').setView(center, zoom)
-
+  //https://gis.stackexchange.com/questions/225098/using-google-maps-static-tiles-with-leaflet
   //const url = 'https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png'
   const url = 'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}'
+  //const url = 'http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}'
 
   $L.tileLayer(url, {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',

@@ -7,6 +7,7 @@ defineProps({
 })
 </script>
 <style>
+@reference "tailwindcss";
 .list-enter-active,
 .list-leave-active {
   @apply transition-all duration-700 ease-in-out  transform translate-x-0 opacity-100
